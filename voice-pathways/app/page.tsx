@@ -18,6 +18,8 @@ export default function VoicePathways() {
   const [tName, setTName] = useState('')
   const [tMessage, setTMessage] = useState('')
   const [tSubmitted, setTSubmitted] = useState(false)
+  const [tLoading, setTLoading] = useState(false)
+  const [tError, setTError] = useState<string | null>(null)
 
   const [approvedTestimonials, setApprovedTestimonials] = useState<
     { id: number; name: string | null; message: string; created_at: string }[]
@@ -203,19 +205,40 @@ export default function VoicePathways() {
                 <form
                   onSubmit={async (e) => {
                     e.preventDefault()
+                    setTError(null)
+                    setTSubmitted(false)
 
-                    const { error } = await supabase.from('testimonials').insert({
-                      name: tName.trim() || null,
-                      message: tMessage.trim(),
-                      approved: false
-                    })
+                    const trimmedMessage = tMessage.trim()
+                    if (!trimmedMessage) {
+                      setTError('Please enter a testimonial message before submitting.')
+                      return
+                    }
 
-                    if (!error) {
+                    try {
+                      setTLoading(true)
+                      const { error } = await supabase.from('testimonials').insert({
+                        name: tName.trim() || null,
+                        message: trimmedMessage,
+                        approved: false
+                      })
+
+                      if (error) {
+                        setTError('Hmm—something went wrong submitting your testimonial. Please try again in a moment.')
+                        // Helpful for debugging during testing:
+                        console.error('Supabase insert error:', error)
+                        return
+                      }
+
                       setTSubmitted(true)
                       setTName('')
                       setTMessage('')
                       // Refresh approved list (new submissions won't appear until approved)
                       fetchApprovedTestimonials()
+                    } catch (err) {
+                      setTError('Hmm—something went wrong submitting your testimonial. Please try again in a moment.')
+                      console.error('Testimonial submit exception:', err)
+                    } finally {
+                      setTLoading(false)
                     }
                   }}
                   className="mt-4 grid gap-3 max-w-md mx-auto"
@@ -233,10 +256,13 @@ export default function VoicePathways() {
                     onChange={(e) => setTMessage(e.target.value)}
                     required
                   />
-                  <Button type="submit" className="rounded-full px-6 py-2 shadow">
-                    Submit Testimonial
+                  <Button type="submit" className="rounded-full px-6 py-2 shadow" disabled={tLoading}>
+                    {tLoading ? 'Submitting…' : 'Submit Testimonial'}
                   </Button>
-                  {tSubmitted && (
+                  {tError && (
+                    <p className="text-xs text-red-600 text-center">{tError}</p>
+                  )}
+                  {tSubmitted && !tError && (
                     <p className="text-xs text-green-600 text-center">Thank you! Your Testimonial will appear shortly!</p>
                   )}
                 </form>
