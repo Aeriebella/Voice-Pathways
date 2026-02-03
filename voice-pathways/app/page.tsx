@@ -72,7 +72,7 @@ export default function VoicePathways() {
       </header>
 
       <main id="home" className="relative max-w-5xl mx-auto grid gap-16 p-6 z-10">
-        <motion.div aria-hidden="true" style={{ y: leftBg }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-10 z-0">
+        <motion.div aria-hidden="true" style={{ y: leftBg }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-25 z-0">
           <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="stemGradLeft" x1="0" y1="0" x2="0" y2="1">
@@ -80,13 +80,30 @@ export default function VoicePathways() {
                 <stop offset="100%" stopColor="#F9A8D4" />
               </linearGradient>
             </defs>
-            <path d="M70 0c30 80-30 160-10 260 20 100-40 200-20 320 20 120 10 200 10 320" stroke="url(#stemGradLeft)" strokeWidth="10" fill="none" />
+            <path d="M70 0c30 80-30 160-10 260 20 100-40 200-20 320 20 120 10 200 10 320" stroke="url(#stemGradLeft)" strokeWidth="18" fill="none" />
           </svg>
         </motion.div>
 
-        <motion.div aria-hidden="true" style={{ y: leftY, x: leftDrift }} transition={{ type: 'spring', stiffness: 25, damping: 18 }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-50 z-0">
+        <motion.div aria-hidden="true" style={{ y: leftY, x: leftDrift }} transition={{ type: 'spring', stiffness: 25, damping: 18 }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-75 z-0">
           <svg viewBox="0 0 160 1000" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#BAE6FD">
+            <defs>
+              <linearGradient id="petalGradLeft" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#7DD3FC" />
+                <stop offset="100%" stopColor="#F9A8D4" />
+              </linearGradient>
+              <linearGradient id="petalGradRight" x1="1" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#F9A8D4" />
+                <stop offset="100%" stopColor="#7DD3FC" />
+              </linearGradient>
+              <filter id="softGlow">
+                <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <g fill="url(#petalGradLeft)" opacity="0.95">
               <path d="M80 80c20 40-30 70-30 110 0 30 30 50 30 50s30-20 30-50c0-40-50-70-30-110z" />
               <path d="M95 140c25 35-20 65-20 95 0 25 20 40 20 40s20-15 20-40c0-30-40-60-20-95z" fill="#F9A8D4" opacity="0.75" />
               <path d="M60 240c40 20 40 70 0 90-40-20-40-70 0-90z" fill="#F9A8D4" />
@@ -97,21 +114,21 @@ export default function VoicePathways() {
           </svg>
         </motion.div>
 
-        <motion.div aria-hidden="true" style={{ y: rightBg }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-10 z-0">
+        <motion.div aria-hidden="true" style={{ y: rightBg }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-25 z-0">
           <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="stemGradRight" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#7DD3FC" />
-                <stop offset="100%" stopColor="#F9A8D4" />
+                <stop offset="0%" stopColor="#F9A8D4" />
+                <stop offset="100%" stopColor="#7DD3FC" />
               </linearGradient>
             </defs>
-            <path d="M70 0c-30 80 30 160 10 260-20 100 40 200 20 320-20 120-10 200-10 320" stroke="url(#stemGradRight)" strokeWidth="10" fill="none" />
+            <path d="M70 0c-30 80 30 160 10 260-20 100 40 200 20 320-20 120-10 200-10 320" stroke="url(#stemGradRight)" strokeWidth="18" fill="none" />
           </svg>
         </motion.div>
 
-        <motion.div aria-hidden="true" style={{ y: rightY, x: rightDrift }} transition={{ type: 'spring', stiffness: 22, damping: 20 }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-45 z-0">
+        <motion.div aria-hidden="true" style={{ y: rightY, x: rightDrift }} transition={{ type: 'spring', stiffness: 22, damping: 20 }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-75 z-0">
           <svg viewBox="0 0 160 1000" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#7DD3FC">
+            <g fill="url(#petalGradRight)" opacity="0.95">
               <path d="M80 100c-20 40 30 70 30 110 0 30-30 50-30 50s-30-20-30-50c0-40 50-70 30-110z" />
               <path d="M65 155c-25 35 20 65 20 95 0 25-20 40-20 40s-20-15-20-40c0-30 40-60 20-95z" fill="#FBCFE8" opacity="0.75" />
               <path d="M100 300c-40 20-40 70 0 90 40-20 40-70 0-90z" fill="#FBCFE8" />
@@ -162,7 +179,7 @@ export default function VoicePathways() {
               <Card className="rounded-2xl shadow group hover:shadow-xl transition">
                 <CardContent className="p-4 text-center">
                   <h3 className="font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm text-gray-600 opacity-0 group-hover:opacity-100 transition">{item.desc}</p>
+                  <p className="mt-2 text-sm text-gray-600 opacity-0 group-hover:opacity-250 transition">{item.desc}</p>
                 </CardContent>
               </Card>
             </motion.div>
