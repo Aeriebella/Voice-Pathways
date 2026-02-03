@@ -74,9 +74,13 @@ export default function VoicePathways() {
       <main id="home" className="relative max-w-5xl mx-auto grid gap-16 p-6 z-10">
         <motion.div aria-hidden="true" style={{ y: leftBg }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-10 z-0">
           <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#7DD3FC">
-              <path d="M70 0c30 80-30 160-10 260 20 100-40 200-20 320 20 120 10 200 10 320" stroke="#BAE6FD" strokeWidth="10" fill="none" />
-            </g>
+            <defs>
+              <linearGradient id="stemGradLeft" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#7DD3FC" />
+                <stop offset="100%" stopColor="#F9A8D4" />
+              </linearGradient>
+            </defs>
+            <path d="M70 0c30 80-30 160-10 260 20 100-40 200-20 320 20 120 10 200 10 320" stroke="url(#stemGradLeft)" strokeWidth="10" fill="none" />
           </svg>
         </motion.div>
 
@@ -95,9 +99,13 @@ export default function VoicePathways() {
 
         <motion.div aria-hidden="true" style={{ y: rightBg }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-10 z-0">
           <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#7DD3FC">
-              <path d="M70 0c-30 80 30 160 10 260-20 100 40 200 20 320-20 120-10 200-10 320" stroke="#BAE6FD" strokeWidth="6" fill="none" />
-            </g>
+            <defs>
+              <linearGradient id="stemGradRight" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#7DD3FC" />
+                <stop offset="100%" stopColor="#F9A8D4" />
+              </linearGradient>
+            </defs>
+            <path d="M70 0c-30 80 30 160 10 260-20 100 40 200 20 320-20 120-10 200-10 320" stroke="url(#stemGradRight)" strokeWidth="10" fill="none" />
           </svg>
         </motion.div>
 
@@ -345,6 +353,5 @@ export default function VoicePathways() {
     </div>
   )
 }
-
 
 
