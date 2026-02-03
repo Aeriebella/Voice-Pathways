@@ -74,19 +74,19 @@ export default function VoicePathways() {
       <main id="home" className="relative max-w-5xl mx-auto grid gap-16 p-6 z-10">
         <motion.div aria-hidden="true" style={{ y: leftBg }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-10 z-0">
           <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#5A1823">
-              <path d="M70 0c30 80-30 160-10 260 20 100-40 200-20 320 20 120 10 200 10 320" stroke="#6B1F2B" strokeWidth="6" fill="none" />
+            <g fill="#7DD3FC">
+              <path d="M70 0c30 80-30 160-10 260 20 100-40 200-20 320 20 120 10 200 10 320" stroke="#BAE6FD" strokeWidth="6" fill="none" />
             </g>
           </svg>
         </motion.div>
 
         <motion.div aria-hidden="true" style={{ y: leftY, x: leftDrift }} transition={{ type: 'spring', stiffness: 25, damping: 18 }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-30 z-0">
           <svg viewBox="0 0 160 1000" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#6B1F2B">
+            <g fill="#BAE6FD">
               <path d="M80 80c20 40-30 70-30 110 0 30 30 50 30 50s30-20 30-50c0-40-50-70-30-110z" />
-              <path d="M60 240c40 20 40 70 0 90-40-20-40-70 0-90z" fill="#8B2E3E" />
-              <path d="M90 400c20 50-30 90-30 140 0 40 30 70 30 70s30-30 30-70c0-50-50-90-30-140z" fill="#7A2432" />
-              <path d="M70 650c50 25 50 90 0 120-50-25-50-90 0-120z" fill="#A855F7" opacity="0.35" />
+              <path d="M60 240c40 20 40 70 0 90-40-20-40-70 0-90z" fill="#F9A8D4" />
+              <path d="M90 400c20 50-30 90-30 140 0 40 30 70 30 70s30-30 30-70c0-50-50-90-30-140z" fill="#FBCFE8" />
+              <path d="M70 650c50 25 50 90 0 120-50-25-50-90 0-120z" fill="#93C5FD" opacity="0.35" />
               <circle cx="100" cy="520" r="10" fill="#FBCFE8" opacity="0.6" />
             </g>
           </svg>
@@ -94,19 +94,19 @@ export default function VoicePathways() {
 
         <motion.div aria-hidden="true" style={{ y: rightBg }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-10 z-0">
           <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#5A1823">
-              <path d="M70 0c-30 80 30 160 10 260-20 100 40 200 20 320-20 120-10 200-10 320" stroke="#6B1F2B" strokeWidth="6" fill="none" />
+            <g fill="#7DD3FC">
+              <path d="M70 0c-30 80 30 160 10 260-20 100 40 200 20 320-20 120-10 200-10 320" stroke="#BAE6FD" strokeWidth="6" fill="none" />
             </g>
           </svg>
         </motion.div>
 
         <motion.div aria-hidden="true" style={{ y: rightY, x: rightDrift }} transition={{ type: 'spring', stiffness: 22, damping: 20 }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-25 z-0">
           <svg viewBox="0 0 160 1000" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#5A1823">
+            <g fill="#7DD3FC">
               <path d="M80 100c-20 40 30 70 30 110 0 30-30 50-30 50s-30-20-30-50c0-40 50-70 30-110z" />
-              <path d="M100 300c-40 20-40 70 0 90 40-20 40-70 0-90z" fill="#7A2432" />
-              <path d="M60 480c-20 50 30 90 30 140 0 40-30 70-30 70s-30-30-30-70c0-50 50-90 30-140z" fill="#8B2E3E" />
-              <path d="M90 720c-50 25-50 90 0 120 50-25 50-90 0-120z" fill="#EC4899" opacity="0.35" />
+              <path d="M100 300c-40 20-40 70 0 90 40-20 40-70 0-90z" fill="#FBCFE8" />
+              <path d="M60 480c-20 50 30 90 30 140 0 40-30 70-30 70s-30-30-30-70c0-50 50-90 30-140z" fill="#F9A8D4" />
+              <path d="M90 720c-50 25-50 90 0 120 50-25 50-90 0-120z" fill="#F9A8D4" opacity="0.35" />
               <circle cx="50" cy="560" r="10" fill="#FBCFE8" opacity="0.6" />
             </g>
           </svg>
@@ -229,7 +229,6 @@ export default function VoicePathways() {
 
                       if (error) {
                         setTError('Hmm—something went wrong submitting your testimonial. Please try again in a moment.')
-                        // Helpful for debugging during testing:
                         console.error('Supabase insert error:', error)
                         return
                       }
@@ -237,11 +236,10 @@ export default function VoicePathways() {
                       setTSubmitted(true)
                       setTName('')
                       setTMessage('')
-                      // Refresh approved list (new submissions won't appear until approved)
                       fetchApprovedTestimonials()
                     } catch (err) {
-                      setTError('Hmm—something went wrong submitting your testimonial. Please try again in a moment.')
                       console.error('Testimonial submit exception:', err)
+                      setTError('Hmm—something went wrong submitting your testimonial. Please try again in a moment.')
                     } finally {
                       setTLoading(false)
                     }
@@ -264,9 +262,8 @@ export default function VoicePathways() {
                   <Button type="submit" className="rounded-full px-6 py-2 shadow" disabled={tLoading}>
                     {tLoading ? 'Submitting…' : 'Submit Testimonial'}
                   </Button>
-                  {tError && (
-                    <p className="text-xs text-red-600 text-center">{tError}</p>
-                  )}
+
+                  {tError && <p className="text-xs text-red-600 text-center">{tError}</p>}
                   {tSubmitted && !tError && (
                     <p className="text-xs text-green-600 text-center">Thank you! Your Testimonial will appear shortly!</p>
                   )}
@@ -277,11 +274,12 @@ export default function VoicePathways() {
         </motion.section>
 
         <motion.section id="apply" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-          <Card className="rounded-2xl shadow-lg">
+          <Card className="rounded-2xl shadow-xl backdrop-blur bg-white/70">
             <CardContent className="p-6">
-              <h2 className="text-xl font-semibold mb-1">Application</h2>
-              <p className="mb-2 text-sm text-gray-700">We invite you to share a little about yourself.</p>
-              <p className="mb-3 text-sm text-gray-600">Prices will be included in our email responses to your applications.</p>
+              <h2 className="text-2xl font-semibold text-center">Application</h2>
+              <p className="mt-2 text-sm text-gray-600 text-center">
+                Prices will be included in our email responses to your application.
+              </p>
 
               <form
                 onSubmit={async (e) => {
@@ -297,15 +295,12 @@ export default function VoicePathways() {
                     const res = await fetch('/api/apply', {
                       method: 'POST',
                       headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify(payload),
+                      body: JSON.stringify(payload)
                     })
 
                     if (!res.ok) {
                       const data = await res.json().catch(() => null)
-                      setAError(
-                        data?.error ||
-                          'Hmm—something went wrong sending your application. Please try again in a moment.'
-                      )
+                      setAError(data?.error || 'Hmm—something went wrong sending your application. Please try again in a moment.')
                       return
                     }
 
@@ -313,14 +308,12 @@ export default function VoicePathways() {
                     e.currentTarget.reset()
                   } catch (err) {
                     console.error('Application submit exception:', err)
-                    setAError(
-                      'Hmm—something went wrong sending your application. Please try again in a moment.'
-                    )
+                    setAError('Hmm—something went wrong sending your application. Please try again in a moment.')
                   } finally {
                     setALoading(false)
                   }
                 }}
-                className="grid gap-3"
+                className="mt-6 grid gap-3 max-w-md mx-auto"
               >
                 <input className="border p-2 rounded" placeholder="Chosen Name" name="chosenName" required />
                 <input className="border p-2 rounded" placeholder="Legal Name (optional)" name="legalName" />
@@ -341,7 +334,6 @@ export default function VoicePathways() {
                   </p>
                 )}
               </form>
-
             </CardContent>
           </Card>
         </motion.section>
