@@ -75,15 +75,16 @@ export default function VoicePathways() {
         <motion.div aria-hidden="true" style={{ y: leftBg }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-10 z-0">
           <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <g fill="#7DD3FC">
-              <path d="M70 0c30 80-30 160-10 260 20 100-40 200-20 320 20 120 10 200 10 320" stroke="#BAE6FD" strokeWidth="6" fill="none" />
+              <path d="M70 0c30 80-30 160-10 260 20 100-40 200-20 320 20 120 10 200 10 320" stroke="#BAE6FD" strokeWidth="10" fill="none" />
             </g>
           </svg>
         </motion.div>
 
-        <motion.div aria-hidden="true" style={{ y: leftY, x: leftDrift }} transition={{ type: 'spring', stiffness: 25, damping: 18 }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-30 z-0">
+        <motion.div aria-hidden="true" style={{ y: leftY, x: leftDrift }} transition={{ type: 'spring', stiffness: 25, damping: 18 }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-50 z-0">
           <svg viewBox="0 0 160 1000" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <g fill="#BAE6FD">
               <path d="M80 80c20 40-30 70-30 110 0 30 30 50 30 50s30-20 30-50c0-40-50-70-30-110z" />
+              <path d="M95 140c25 35-20 65-20 95 0 25 20 40 20 40s20-15 20-40c0-30-40-60-20-95z" fill="#F9A8D4" opacity="0.75" />
               <path d="M60 240c40 20 40 70 0 90-40-20-40-70 0-90z" fill="#F9A8D4" />
               <path d="M90 400c20 50-30 90-30 140 0 40 30 70 30 70s30-30 30-70c0-50-50-90-30-140z" fill="#FBCFE8" />
               <path d="M70 650c50 25 50 90 0 120-50-25-50-90 0-120z" fill="#93C5FD" opacity="0.35" />
@@ -100,10 +101,11 @@ export default function VoicePathways() {
           </svg>
         </motion.div>
 
-        <motion.div aria-hidden="true" style={{ y: rightY, x: rightDrift }} transition={{ type: 'spring', stiffness: 22, damping: 20 }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-25 z-0">
+        <motion.div aria-hidden="true" style={{ y: rightY, x: rightDrift }} transition={{ type: 'spring', stiffness: 22, damping: 20 }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-45 z-0">
           <svg viewBox="0 0 160 1000" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <g fill="#7DD3FC">
               <path d="M80 100c-20 40 30 70 30 110 0 30-30 50-30 50s-30-20-30-50c0-40 50-70 30-110z" />
+              <path d="M65 155c-25 35 20 65 20 95 0 25-20 40-20 40s-20-15-20-40c0-30 40-60 20-95z" fill="#FBCFE8" opacity="0.75" />
               <path d="M100 300c-40 20-40 70 0 90 40-20 40-70 0-90z" fill="#FBCFE8" />
               <path d="M60 480c-20 50 30 90 30 140 0 40-30 70-30 70s-30-30-30-70c0-50 50-90 30-140z" fill="#F9A8D4" />
               <path d="M90 720c-50 25-50 90 0 120 50-25 50-90 0-120z" fill="#F9A8D4" opacity="0.35" />
@@ -343,5 +345,6 @@ export default function VoicePathways() {
     </div>
   )
 }
+
 
 
