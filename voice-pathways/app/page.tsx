@@ -56,6 +56,160 @@ export default function VoicePathways() {
     }, 6500)
     return () => clearInterval(interval)
   }, [approvedTestimonials])
+function LivingVine({
+  side,
+  scrollY,
+}: {
+  side: 'left' | 'right'
+  scrollY: any
+}) {
+  // Gradient drift: makes the gradient feel like it’s flowing through the plant
+  const gradDrift = useTransform(scrollY, (v: number) =>
+    `translate(0 ${-(v * 0.08)})`
+  )
+
+  // Glow “breathes” slightly with scroll (noticeable but not neon)
+  const glow = useTransform(scrollY, [0, 1200], [0.55, 0.85])
+
+  // Slight parallax offset for the blossom layer
+  const blossomDrift = useTransform(scrollY, (v: number) =>
+    `translate(${side === 'left' ? v * 0.02 : -(v * 0.02)} ${v * 0.015})`
+  )
+
+  // Flip vine geometry for right side
+  const flip = side === 'right' ? 'scale(-1,1) translate(-160,0)' : ''
+
+  return (
+    <svg viewBox="0 0 160 2400" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        {/* stem gradient: one side inverted for playful contrast */}
+        <motion.linearGradient
+          id={`stemGrad-${side}`}
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="1"
+          gradientTransform={gradDrift}
+        >
+          <stop offset="0%" stopColor={side === 'left' ? '#7DD3FC' : '#F9A8D4'} />
+          <stop offset="100%" stopColor={side === 'left' ? '#F9A8D4' : '#7DD3FC'} />
+        </motion.linearGradient>
+
+        {/* leaf + petal gradients */}
+        <motion.linearGradient
+          id={`leafGrad-${side}`}
+          x1="0"
+          y1="1"
+          x2="1"
+          y2="0"
+          gradientTransform={gradDrift}
+        >
+          <stop offset="0%" stopColor="#93C5FD" />
+          <stop offset="100%" stopColor="#FBCFE8" />
+        </motion.linearGradient>
+
+        <motion.linearGradient
+          id={`petalGrad-${side}`}
+          x1="0"
+          y1="0"
+          x2="1"
+          y2="1"
+          gradientTransform={gradDrift}
+        >
+          <stop offset="0%" stopColor="#7DD3FC" />
+          <stop offset="100%" stopColor="#F9A8D4" />
+        </motion.linearGradient>
+
+        {/* noticeable but soft glow */}
+        <filter id={`glow-${side}`} x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="3.2" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <g transform={flip}>
+        {/* tapered “growing” stem: thick low, thinner high */}
+        <path
+          d="M86 0c20 160-28 280-14 460 14 190-40 320-14 520 26 200 58 340 34 520-24 170-56 300-34 470 20 170 64 300 36 510"
+          stroke={`url(#stemGrad-${side})`}
+          strokeWidth="12"
+          strokeLinecap="round"
+          fill="none"
+          opacity="0.6"
+        />
+        <path
+          d="M86 0c20 160-28 280-14 460 14 190-40 320-14 520 26 200 58 340 34 520-24 170-56 300-34 470 20 170 64 300 36 510"
+          stroke={`url(#stemGrad-${side})`}
+          strokeWidth="6"
+          strokeLinecap="round"
+          fill="none"
+          opacity="0.35"
+        />
+
+        {/* Leaves feel attached: asymmetry + gentle vein-like cut */}
+        <motion.g style={{ opacity: glow }} filter={`url(#glow-${side})`}>
+          {[
+            { x: 62, y: 220, s: 1.05 },
+            { x: 92, y: 420, s: 0.95 },
+            { x: 66, y: 680, s: 1.1 },
+            { x: 96, y: 940, s: 1.0 },
+            { x: 70, y: 1220, s: 1.15 },
+            { x: 94, y: 1480, s: 1.05 },
+            { x: 68, y: 1760, s: 1.2 },
+            { x: 96, y: 2060, s: 1.0 },
+          ].map((p, i) => (
+            <g key={i} transform={`translate(${p.x} ${p.y}) scale(${p.s})`}>
+              <path
+                d="M0 0c-26 18-34 46-16 80 34 2 60-20 70-56C42 10 24 0 0 0z"
+                fill={`url(#leafGrad-${side})`}
+                opacity="0.9"
+              />
+              <path
+                d="M14 18c-10 18-6 34 10 48"
+                stroke="#ffffff"
+                strokeOpacity="0.18"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+              />
+            </g>
+          ))}
+        </motion.g>
+
+        {/* Blossoms + buds: clustered + petal shapes (not balloons) */}
+        <motion.g transform={blossomDrift} style={{ opacity: glow }} filter={`url(#glow-${side})`}>
+          {[
+            { x: 88, y: 300, r: 1.0 },
+            { x: 76, y: 520, r: 0.9 },
+            { x: 92, y: 820, r: 1.05 },
+            { x: 78, y: 1100, r: 0.95 },
+            { x: 92, y: 1380, r: 1.0 },
+            { x: 78, y: 1660, r: 1.1 },
+            { x: 90, y: 1980, r: 1.0 },
+            { x: 76, y: 2220, r: 0.9 },
+          ].map((b, i) => (
+            <g key={i} transform={`translate(${b.x} ${b.y}) scale(${b.r})`}>
+              {/* 5-petal blossom */}
+              <g fill={`url(#petalGrad-${side})`} opacity="0.95">
+                <path d="M0 -14c10-2 16 8 10 16-8 10-22 6-22-6 0-4 4-8 12-10z" />
+                <path d="M14 0c2 10-8 16-16 10-10-8-6-22 6-22 4 0 8 4 10 12z" />
+                <path d="M0 14c-10 2-16-8-10-16 8-10 22-6 22 6 0 4-4 8-12 10z" />
+                <path d="M-14 0c-2-10 8-16 16-10 10 8 6 22-6 22-4 0-8-4-10-12z" />
+                <path d="M10 -10c8 4 8 16 0 20-10 6-22-2-22-10 0-10 14-16 22-10z" opacity="0.85" />
+              </g>
+              <circle cx="0" cy="0" r="4" fill="#FBCFE8" opacity="0.9" />
+              {/* small bud to make it feel botanical */}
+              <circle cx="18" cy="8" r="5" fill="#BAE6FD" opacity="0.75" />
+            </g>
+          ))}
+        </motion.g>
+      </g>
+    </svg>
+  )
+}
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50 via-violet-50 to-white text-gray-800">
@@ -72,72 +226,23 @@ export default function VoicePathways() {
       </header>
 
       <main id="home" className="relative max-w-5xl mx-auto grid gap-16 p-6 z-10">
-        <motion.div aria-hidden="true" style={{ y: leftBg }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-25 z-0">
-          <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="stemGradLeft" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#7DD3FC" />
-                <stop offset="100%" stopColor="#F9A8D4" />
-              </linearGradient>
-            </defs>
-            <path d="M70 0c30 80-30 160-10 260 20 100-40 200-20 320 20 120 10 200 10 320" stroke="url(#stemGradLeft)" strokeWidth="18" fill="none" />
-          </svg>
-        </motion.div>
+        {/* Living botanical margins */}
+<motion.div
+  aria-hidden="true"
+  className="pointer-events-none fixed top-0 bottom-0 left-0 w-20 sm:w-24 z-0"
+  style={{ y: leftY, x: leftDrift }}
+>
+  <LivingVine side="left" scrollY={scrollY} />
+</motion.div>
 
-        <motion.div aria-hidden="true" style={{ y: leftY, x: leftDrift }} transition={{ type: 'spring', stiffness: 25, damping: 18 }} className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-75 z-0">
-          <svg viewBox="0 0 160 1000" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="petalGradLeft" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#7DD3FC" />
-                <stop offset="100%" stopColor="#F9A8D4" />
-              </linearGradient>
-              <linearGradient id="petalGradRight" x1="1" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#F9A8D4" />
-                <stop offset="100%" stopColor="#7DD3FC" />
-              </linearGradient>
-              <filter id="softGlow">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-            <g fill="url(#petalGradLeft)" opacity="0.95">
-              <path d="M80 80c20 40-30 70-30 110 0 30 30 50 30 50s30-20 30-50c0-40-50-70-30-110z" />
-              <path d="M95 140c25 35-20 65-20 95 0 25 20 40 20 40s20-15 20-40c0-30-40-60-20-95z" fill="#F9A8D4" opacity="0.75" />
-              <path d="M60 240c40 20 40 70 0 90-40-20-40-70 0-90z" fill="#F9A8D4" />
-              <path d="M90 400c20 50-30 90-30 140 0 40 30 70 30 70s30-30 30-70c0-50-50-90-30-140z" fill="#FBCFE8" />
-              <path d="M70 650c50 25 50 90 0 120-50-25-50-90 0-120z" fill="#93C5FD" opacity="0.35" />
-              <circle cx="100" cy="520" r="10" fill="#FBCFE8" opacity="0.6" />
-            </g>
-          </svg>
-        </motion.div>
+<motion.div
+  aria-hidden="true"
+  className="pointer-events-none fixed top-0 bottom-0 right-0 w-20 sm:w-24 z-0"
+  style={{ y: rightY, x: rightDrift }}
+>
+  <LivingVine side="right" scrollY={scrollY} />
+</motion.div>
 
-        <motion.div aria-hidden="true" style={{ y: rightBg }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-25 z-0">
-          <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="stemGradRight" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#F9A8D4" />
-                <stop offset="100%" stopColor="#7DD3FC" />
-              </linearGradient>
-            </defs>
-            <path d="M70 0c-30 80 30 160 10 260-20 100 40 200 20 320-20 120-10 200-10 320" stroke="url(#stemGradRight)" strokeWidth="18" fill="none" />
-          </svg>
-        </motion.div>
-
-        <motion.div aria-hidden="true" style={{ y: rightY, x: rightDrift }} transition={{ type: 'spring', stiffness: 22, damping: 20 }} className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-75 z-0">
-          <svg viewBox="0 0 160 1000" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="url(#petalGradRight)" opacity="0.95">
-              <path d="M80 100c-20 40 30 70 30 110 0 30-30 50-30 50s-30-20-30-50c0-40 50-70 30-110z" />
-              <path d="M65 155c-25 35 20 65 20 95 0 25-20 40-20 40s-20-15-20-40c0-30 40-60 20-95z" fill="#FBCFE8" opacity="0.75" />
-              <path d="M100 300c-40 20-40 70 0 90 40-20 40-70 0-90z" fill="#FBCFE8" />
-              <path d="M60 480c-20 50 30 90 30 140 0 40-30 70-30 70s-30-30-30-70c0-50 50-90 30-140z" fill="#F9A8D4" />
-              <path d="M90 720c-50 25-50 90 0 120 50-25 50-90 0-120z" fill="#F9A8D4" opacity="0.35" />
-              <circle cx="50" cy="560" r="10" fill="#FBCFE8" opacity="0.6" />
-            </g>
-          </svg>
-        </motion.div>
 
         <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <Card className="rounded-2xl shadow-xl backdrop-blur bg-white/70">
@@ -179,7 +284,7 @@ export default function VoicePathways() {
               <Card className="rounded-2xl shadow group hover:shadow-xl transition">
                 <CardContent className="p-4 text-center">
                   <h3 className="font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm text-gray-600 opacity-0 group-hover:opacity-250 transition">{item.desc}</p>
+                  <p className="mt-2 text-sm text-gray-600 opacity-0 group-hover:opacity-100 transition">{item.desc}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -370,5 +475,4 @@ export default function VoicePathways() {
     </div>
   )
 }
-
 
