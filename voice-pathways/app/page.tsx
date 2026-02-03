@@ -21,6 +21,11 @@ export default function VoicePathways() {
   const [tLoading, setTLoading] = useState(false)
   const [tError, setTError] = useState<string | null>(null)
 
+  // Application (email)
+  const [aLoading, setALoading] = useState(false)
+  const [aSubmitted, setASubmitted] = useState(false)
+  const [aError, setAError] = useState<string | null>(null)
+
   const [approvedTestimonials, setApprovedTestimonials] = useState<
     { id: number; name: string | null; message: string; created_at: string }[]
   >([])
@@ -278,18 +283,65 @@ export default function VoicePathways() {
               <p className="mb-2 text-sm text-gray-700">We invite you to share a little about yourself.</p>
               <p className="mb-3 text-sm text-gray-600">Prices will be included in our email responses to your applications.</p>
 
-              <form action="mailto:yourbusiness@email.com" method="post" encType="text/plain" className="grid gap-3">
-                <input className="border p-2 rounded" placeholder="Chosen Name" name="Chosen Name" />
-                <input className="border p-2 rounded" placeholder="Legal Name (optional)" name="Legal Name" />
-                <input className="border p-2 rounded" placeholder="Email" name="Email" />
-                <input className="border p-2 rounded" placeholder="Age" name="Age" />
-                <textarea className="border p-2 rounded" placeholder="Previous vocal training (if any)" name="Previous Training" />
-                <textarea className="border p-2 rounded" placeholder="Barriers to training (time, anxiety, etc.)" name="Barriers" />
-                <textarea className="border p-2 rounded" placeholder="Tell me about your goals" name="Goals" />
-                <Button type="submit" className="rounded-full px-6 py-2 shadow-lg">
-                  Send Application
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault()
+                  setAError(null)
+                  setASubmitted(false)
+
+                  const formData = new FormData(e.currentTarget)
+                  const payload = Object.fromEntries(formData.entries())
+
+                  try {
+                    setALoading(true)
+                    const res = await fetch('/api/apply', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(payload),
+                    })
+
+                    if (!res.ok) {
+                      const data = await res.json().catch(() => null)
+                      setAError(
+                        data?.error ||
+                          'Hmm—something went wrong sending your application. Please try again in a moment.'
+                      )
+                      return
+                    }
+
+                    setASubmitted(true)
+                    e.currentTarget.reset()
+                  } catch (err) {
+                    console.error('Application submit exception:', err)
+                    setAError(
+                      'Hmm—something went wrong sending your application. Please try again in a moment.'
+                    )
+                  } finally {
+                    setALoading(false)
+                  }
+                }}
+                className="grid gap-3"
+              >
+                <input className="border p-2 rounded" placeholder="Chosen Name" name="chosenName" required />
+                <input className="border p-2 rounded" placeholder="Legal Name (optional)" name="legalName" />
+                <input className="border p-2 rounded" placeholder="Email" name="email" type="email" required />
+                <input className="border p-2 rounded" placeholder="Age" name="age" />
+                <textarea className="border p-2 rounded" placeholder="Previous vocal training (if any)" name="previousTraining" />
+                <textarea className="border p-2 rounded" placeholder="Barriers to training (time, anxiety, etc.)" name="barriers" />
+                <textarea className="border p-2 rounded" placeholder="Tell me about your goals" name="goals" required />
+
+                <Button type="submit" className="rounded-full px-6 py-2 shadow-lg" disabled={aLoading}>
+                  {aLoading ? 'Sending…' : 'Send Application'}
                 </Button>
+
+                {aError && <p className="text-xs text-red-600 text-center">{aError}</p>}
+                {aSubmitted && !aError && (
+                  <p className="text-xs text-green-600 text-center">
+                    Thank you! Your application has been sent. I’ll reply by email with next steps.
+                  </p>
+                )}
               </form>
+
             </CardContent>
           </Card>
         </motion.section>
