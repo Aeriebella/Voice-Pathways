@@ -104,7 +104,7 @@ export default function VoicePathways() {
       {/* Margin motifs (stationary): rotated logos stay fixed while page scrolls behind */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-y-0 left-0 -translate-x-1/2 w-72 sm:w-80 opacity-95 z-0 flex items-center justify-center overflow-visible"
+        className="pointer-events-none fixed inset-y-0 left-0 -translate-x-1/3 w-72 sm:w-80 opacity-95 z-0 flex items-center justify-center overflow-visible"
       >
         <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
           <div className="h-80 w-80 rounded-full bg-gradient-to-br from-sky-200/35 to-pink-200/35 blur-3xl" />
@@ -121,7 +121,7 @@ export default function VoicePathways() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-y-0 right-0 translate-x-1/2 w-72 sm:w-80 opacity-95 z-0 flex items-center justify-center overflow-visible"
+        className="pointer-events-none fixed inset-y-0 right-0 translate-x-1/3 w-72 sm:w-80 opacity-95 z-0 flex items-center justify-center overflow-visible"
       >
         <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
           <div className="h-80 w-80 rounded-full bg-gradient-to-br from-pink-200/35 to-sky-200/35 blur-3xl" />
