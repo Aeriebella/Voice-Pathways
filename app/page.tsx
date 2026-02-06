@@ -265,6 +265,7 @@ export default function VoicePathways() {
                 className="mt-6 grid gap-3 max-w-md mx-auto"
                 onSubmit={async (e) => {
                   e.preventDefault()
+                  if (aLoading) return
                   setASubmitted(false)
                   setAError(null)
 
@@ -286,6 +287,7 @@ export default function VoicePathways() {
                           'Hmm—something went wrong sending your application. Please try again in a moment.'
                       )
                       return
+                      setASubmitted(false)
                     }
 
                     setASubmitted(true)
@@ -297,6 +299,7 @@ export default function VoicePathways() {
                     )
                   } finally {
                     setALoading(false)
+                    setASubmitted(false)
                   }
                 }}
               >
