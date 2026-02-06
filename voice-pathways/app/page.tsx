@@ -446,10 +446,20 @@ export default function VoicePathways() {
         </motion.section>
       </main>
 
-      <footer className="text-center p-6 text-sm text-gray-600">© Voice Pathways</footer>
+      <footer className="mt-20 text-center p-6 flex flex-col items-center gap-4 text-sm text-gray-600">
+        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-700/80 rounded-full border border-white/60 bg-white/40 px-5 py-2 shadow-sm backdrop-blur">
+          <a href="#home" className="hover:underline">Home</a>
+          <a href="#services" className="hover:underline">Services</a>
+          <a href="#about" className="hover:underline">About</a>
+          <a href="#apply" className="hover:underline">Apply</a>
+          <a href="#testimonials" className="hover:underline">Testimonials</a>
+        </nav>
+        <div>© Voice Pathways</div>
+      </footer>
     </div>
   )
 }
+
 
 
 
