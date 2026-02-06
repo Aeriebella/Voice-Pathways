@@ -106,12 +106,16 @@ export default function VoicePathways() {
         {/* Margin motifs (stationary): rotated logo stays fixed while page scrolls behind it */}
         <div
           aria-hidden="true"
-          className="pointer-events-none fixed inset-y-0 left-4 sm:left-8 w-56 sm:w-64 opacity-90 z-0 flex items-center justify-center overflow-visible"
+          className="pointer-events-none fixed inset-y-0 left-6 sm:left-10 w-72 sm:w-80 opacity-95 z-0 flex items-center justify-center overflow-visible relative"
         >
+          <div aria-hidden="true" className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[70%]">
+            <div className="absolute top-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-gradient-to-br from-sky-200/35 to-pink-200/35 blur-3xl" />
+            <div className="absolute top-1/2 -translate-y-1/2 h-56 w-56 rounded-full bg-white/30 blur-2xl" />
+          </div>
           <img
             src="/logo.png"
             alt=""
-            className="h-48 w-auto drop-shadow-sm"
+            className="h-64 sm:h-72 w-auto max-w-none drop-shadow-md"
             style={{ transform: 'rotate(90deg)', transformOrigin: 'center' }}
             draggable={false}
           />
@@ -119,12 +123,16 @@ export default function VoicePathways() {
 
         <div
           aria-hidden="true"
-          className="pointer-events-none fixed inset-y-0 right-4 sm:right-8 w-56 sm:w-64 opacity-90 z-0 flex items-center justify-center overflow-visible"
+          className="pointer-events-none fixed inset-y-0 right-6 sm:right-10 w-72 sm:w-80 opacity-95 z-0 flex items-center justify-center overflow-visible relative"
         >
+          <div aria-hidden="true" className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[70%]">
+            <div className="absolute top-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-gradient-to-br from-pink-200/35 to-sky-200/35 blur-3xl" />
+            <div className="absolute top-1/2 -translate-y-1/2 h-56 w-56 rounded-full bg-white/30 blur-2xl" />
+          </div>
           <img
             src="/logo.png"
             alt=""
-            className="h-48 w-auto drop-shadow-sm"
+            className="h-64 sm:h-72 w-auto max-w-none drop-shadow-md"
             style={{ transform: 'rotate(270deg)', transformOrigin: 'center' }}
             draggable={false}
           />
@@ -443,7 +451,6 @@ export default function VoicePathways() {
     </div>
   )
 }
-
 
 
 
