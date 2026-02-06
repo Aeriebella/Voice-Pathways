@@ -106,14 +106,14 @@ export default function VoicePathways() {
         {/* Margin motifs (simple): single rotated logo per side */}
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none fixed top-0 bottom-0 left-0 w-44 sm:w-52 opacity-75 z-0 flex items-center justify-center"
+          className="pointer-events-none fixed top-0 bottom-0 left-0 w-28 sm:w-32 opacity-75 z-0 flex items-center justify-center"
           style={{ y: leftY, x: leftDrift }}
           transition={{ type: 'spring', stiffness: 25, damping: 18 }}
         >
           <motion.img
             src="/logo.png"
             alt=""
-            className="h-[92vh] w-auto drop-shadow-sm"
+            className="w-[92vh] h-auto drop-shadow-sm"
             style={{ rotate: 90 }}
             draggable={false}
           />
@@ -121,14 +121,14 @@ export default function VoicePathways() {
 
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none fixed top-0 bottom-0 right-0 w-44 sm:w-52 opacity-75 z-0 flex items-center justify-center"
+          className="pointer-events-none fixed top-0 bottom-0 right-0 w-28 sm:w-32 opacity-75 z-0 flex items-center justify-center"
           style={{ y: rightY, x: rightDrift }}
           transition={{ type: 'spring', stiffness: 22, damping: 20 }}
         >
           <motion.img
             src="/logo.png"
             alt=""
-            className="h-[92vh] w-auto drop-shadow-sm"
+            className="w-[92vh] h-auto drop-shadow-sm"
             style={{ rotate: 270 }}
             draggable={false}
           />
@@ -447,5 +447,6 @@ export default function VoicePathways() {
     </div>
   )
 }
+
 
 
