@@ -113,7 +113,7 @@ export default function VoicePathways() {
           <motion.img
             src="/logo.png"
             alt=""
-            className="w-[92vh] h-auto drop-shadow-sm"
+            className="h-48 w-auto drop-shadow-sm"
             style={{ rotate: 90 }}
             draggable={false}
           />
@@ -128,7 +128,7 @@ export default function VoicePathways() {
           <motion.img
             src="/logo.png"
             alt=""
-            className="w-[92vh] h-auto drop-shadow-sm"
+            className="h-48 w-auto drop-shadow-sm"
             style={{ rotate: 270 }}
             draggable={false}
           />
@@ -447,6 +447,7 @@ export default function VoicePathways() {
     </div>
   )
 }
+
 
 
 
