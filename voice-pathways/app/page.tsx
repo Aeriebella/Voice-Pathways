@@ -68,95 +68,6 @@ export default function VoicePathways() {
     return trimmed ? trimmed : 'Anonymous'
   }
 
-  function LogoMargin({
-    side,
-    scrollY
-  }: {
-    side: 'left' | 'right'
-    scrollY: any
-  }) {
-    // We render ONE logo (no tiling) and split it into drifting horizontal bands.
-    // This keeps the motif meaningful and avoids the “overlapping copies” look.
-
-    // Vertical “ice” glide offsets per band (out of sync)
-    const b1 = useTransform(scrollY, [0, 3000], [0, -46])
-    const b2 = useTransform(scrollY, [0, 3000], [0, -28])
-    const b3 = useTransform(scrollY, [0, 3000], [0, -12])
-
-    // Very small rotation drift (kept upright; no diagonal motion)
-    const rot = useTransform(scrollY, [0, 3000], [0, side === 'left' ? 0.25 : -0.25])
-
-    // Flip vertically as requested; mirror on right for variety.
-    const flip = side === 'right' ? 'scale(-1, -1)' : 'scale(1, -1)'
-
-    return (
-      <svg
-        className="h-full w-full"
-        viewBox="0 0 140 1600"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <defs>
-          {/* band clip masks (3 slices) */}
-          <clipPath id={`logoBandA-${side}`}>
-            <rect x="0" y="0" width="140" height="520" rx="14" />
-          </clipPath>
-          <clipPath id={`logoBandB-${side}`}>
-            <rect x="0" y="520" width="140" height="560" rx="14" />
-          </clipPath>
-          <clipPath id={`logoBandC-${side}`}>
-            <rect x="0" y="1080" width="140" height="520" rx="14" />
-          </clipPath>
-
-          {/* soft edge fade so it blends into the page */}
-          <linearGradient id={`edgeFade-${side}`} x1="0" y1="0" x2="1" y2="0">
-            {side === 'left' ? (
-              <>
-                <stop offset="0%" stopColor="white" stopOpacity="1" />
-                <stop offset="100%" stopColor="white" stopOpacity="0" />
-              </>
-            ) : (
-              <>
-                <stop offset="0%" stopColor="white" stopOpacity="0" />
-                <stop offset="100%" stopColor="white" stopOpacity="1" />
-              </>
-            )}
-          </linearGradient>
-
-          <mask id={`fadeMask-${side}`}>
-            <rect x="0" y="0" width="140" height="1600" fill={`url(#edgeFade-${side})`} />
-          </mask>
-        </defs>
-
-        <g mask={`url(#fadeMask-${side})`} opacity="0.95">
-          {/* A subtle shadow to lift it off the background */}
-          <g style={{ filter: 'drop-shadow(0 10px 24px rgba(0,0,0,0.06))' }}>
-            {/* Band A */}
-            <motion.g clipPath={`url(#logoBandA-${side})`} style={{ y: b1, rotate: rot, transformOrigin: '70px 800px' }}>
-              <g transform={flip} transform-origin="70 800">
-                <image href="/logo.png" x="0" y="220" width="140" height="1160" preserveAspectRatio="xMidYMid meet" opacity="0.22" />
-              </g>
-            </motion.g>
-
-            {/* Band B */}
-            <motion.g clipPath={`url(#logoBandB-${side})`} style={{ y: b2, rotate: rot, transformOrigin: '70px 800px' }}>
-              <g transform={flip} transform-origin="70 800">
-                <image href="/logo.png" x="0" y="220" width="140" height="1160" preserveAspectRatio="xMidYMid meet" opacity="0.20" />
-              </g>
-            </motion.g>
-
-            {/* Band C */}
-            <motion.g clipPath={`url(#logoBandC-${side})`} style={{ y: b3, rotate: rot, transformOrigin: '70px 800px' }}>
-              <g transform={flip} transform-origin="70 800">
-                <image href="/logo.png" x="0" y="220" width="140" height="1160" preserveAspectRatio="xMidYMid meet" opacity="0.18" />
-              </g>
-            </motion.g>
-          </g>
-        </g>
-      </svg>
-    )
-  }
-
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-gradient-to-br from-[#fcfafc] via-[#f6f2f7] to-white text-gray-800">
       {/* soft ambient glow (pearl) */}
@@ -192,23 +103,35 @@ export default function VoicePathways() {
       </header>
 
       <main id="home" className="relative max-w-5xl mx-auto grid gap-16 px-5 sm:px-6 py-10 z-10">
-        {/* Margin identity (logo-based, single motif with drifting slices) */}
+        {/* Margin motifs (simple): single rotated logo per side */}
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none fixed top-0 bottom-0 left-0 w-28 sm:w-32 opacity-90 z-0"
+          className="pointer-events-none fixed top-0 bottom-0 left-0 w-40 sm:w-44 opacity-60 z-0 flex items-start"
           style={{ y: leftY, x: leftDrift }}
           transition={{ type: 'spring', stiffness: 25, damping: 18 }}
         >
-          <LogoMargin side="left" scrollY={scrollY} />
+          <motion.img
+            src="/logo.png"
+            alt=""
+            className="w-full h-auto drop-shadow-sm"
+            style={{ rotate: 90 }}
+            draggable={false}
+          />
         </motion.div>
 
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none fixed top-0 bottom-0 right-0 w-28 sm:w-32 opacity-90 z-0"
+          className="pointer-events-none fixed top-0 bottom-0 right-0 w-40 sm:w-44 opacity-60 z-0 flex items-start"
           style={{ y: rightY, x: rightDrift }}
           transition={{ type: 'spring', stiffness: 22, damping: 20 }}
         >
-          <LogoMargin side="right" scrollY={scrollY} />
+          <motion.img
+            src="/logo.png"
+            alt=""
+            className="w-full h-auto drop-shadow-sm"
+            style={{ rotate: 270 }}
+            draggable={false}
+          />
         </motion.div>
 
         {/* Welcome */}
