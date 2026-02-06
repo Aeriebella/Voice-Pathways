@@ -103,36 +103,32 @@ export default function VoicePathways() {
       </header>
 
       <main id="home" className="relative max-w-5xl mx-auto grid gap-16 px-5 sm:px-6 py-10 z-10">
-        {/* Margin motifs (simple): single rotated logo per side */}
-        <motion.div
+        {/* Margin motifs (stationary): rotated logo stays fixed while page scrolls behind it */}
+        <div
           aria-hidden="true"
-          className="pointer-events-none fixed top-0 bottom-0 left-0 w-28 sm:w-32 opacity-75 z-0 flex items-center justify-center"
-          style={{ y: leftY, x: leftDrift }}
-          transition={{ type: 'spring', stiffness: 25, damping: 18 }}
+          className="pointer-events-none fixed inset-y-0 left-0 w-28 sm:w-32 opacity-85 z-0 flex items-center justify-center overflow-visible"
         >
-          <motion.img
+          <img
             src="/logo.png"
             alt=""
             className="h-48 w-auto drop-shadow-sm"
-            style={{ rotate: 90 }}
+            style={{ transform: 'rotate(90deg)', transformOrigin: 'center' }}
             draggable={false}
           />
-        </motion.div>
+        </div>
 
-        <motion.div
+        <div
           aria-hidden="true"
-          className="pointer-events-none fixed top-0 bottom-0 right-0 w-28 sm:w-32 opacity-75 z-0 flex items-center justify-center"
-          style={{ y: rightY, x: rightDrift }}
-          transition={{ type: 'spring', stiffness: 22, damping: 20 }}
+          className="pointer-events-none fixed inset-y-0 right-0 w-28 sm:w-32 opacity-85 z-0 flex items-center justify-center overflow-visible"
         >
-          <motion.img
+          <img
             src="/logo.png"
             alt=""
             className="h-48 w-auto drop-shadow-sm"
-            style={{ rotate: 270 }}
+            style={{ transform: 'rotate(270deg)', transformOrigin: 'center' }}
             draggable={false}
           />
-        </motion.div>
+        </div>
 
         {/* Welcome */}
         <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -447,6 +443,7 @@ export default function VoicePathways() {
     </div>
   )
 }
+
 
 
 
