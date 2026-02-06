@@ -54,13 +54,16 @@ export async function POST(req: Request) {
       `— sent from VoicePathways.com`,
     ].join('\n')
 
-    const { error } = await resend.emails.send({
-      from: fromEmail,
-      to: toEmail,
-      replyTo: email, // lets you hit “Reply” directly to the applicant
-      subject,
-      text,
-    })
+    const { data, error } = await resend.emails.send({
+  from: fromEmail,
+  to: [toEmail],
+  replyTo: email,
+  subject,
+  text,
+})
+
+console.log('Resend send result:', { data, error, toEmail, fromEmail })
+
 
     if (error) {
       console.error('Resend send error:', error)
@@ -70,7 +73,7 @@ export async function POST(req: Request) {
       )
     }
 
-    return NextResponse.json({ ok: true })
+    return NextResponse.json({ ok: true, id: data?.id ?? null })
   } catch (err) {
     console.error('Apply route exception:', err)
     return NextResponse.json({ error: 'Server error.' }, { status: 500 })
