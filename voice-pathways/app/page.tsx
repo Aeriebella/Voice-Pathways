@@ -68,13 +68,98 @@ export default function VoicePathways() {
     return trimmed ? trimmed : 'Anonymous'
   }
 
+  function LogoMargin({
+    side,
+    scrollY,
+    layered = false
+  }: {
+    side: 'left' | 'right'
+    scrollY: any
+    layered?: boolean
+  }) {
+    // Gentle vertical glide (kept mostly vertical, tiny rotation)
+    const y1 = useTransform(scrollY, [0, 3000], [0, layered ? -180 : -90])
+    const y2 = useTransform(scrollY, [0, 3000], [0, layered ? -120 : -60])
+    const y3 = useTransform(scrollY, [0, 3000], [0, layered ? -70 : -35])
+    const rot = useTransform(scrollY, [0, 3000], [0, side === 'left' ? 0.8 : -0.8])
+
+    const baseStyle: any = {
+      backgroundImage: "url('/logo.png')",
+      backgroundRepeat: 'repeat-y',
+      backgroundSize: '140px auto',
+      backgroundPositionX: side === 'left' ? '20%' : '80%'
+    }
+
+    // Flip vertically + mirror between sides for variation
+    const flipStyle: any = {
+      transform:
+        side === 'right'
+          ? 'scaleX(-1) scaleY(-1)'
+          : 'scaleY(-1)'
+    }
+
+    const band = (mask: string, y: any, opacity: number) => (
+      <motion.div
+        className="absolute inset-0"
+        style={{ ...baseStyle, y, rotate: rot, opacity }}
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            WebkitMaskImage: mask,
+            maskImage: mask,
+            WebkitMaskRepeat: 'repeat',
+            maskRepeat: 'repeat',
+            WebkitMaskSize: '100% 220px',
+            maskSize: '100% 220px'
+          }}
+        />
+      </motion.div>
+    )
+
+    // Alternating “slices” so internal separations drift out of sync
+    const maskA =
+      'linear-gradient(to bottom, rgba(0,0,0,1) 0 38%, rgba(0,0,0,0) 38% 62%, rgba(0,0,0,1) 62% 100%)'
+    const maskB =
+      'linear-gradient(to bottom, rgba(0,0,0,0) 0 22%, rgba(0,0,0,1) 22% 52%, rgba(0,0,0,0) 52% 78%, rgba(0,0,0,1) 78% 100%)'
+    const maskC =
+      'linear-gradient(to bottom, rgba(0,0,0,1) 0 18%, rgba(0,0,0,0) 18% 46%, rgba(0,0,0,1) 46% 72%, rgba(0,0,0,0) 72% 100%)'
+
+    const edgeFade =
+      side === 'left'
+        ? 'linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))'
+        : 'linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0))'
+
+    return (
+      <div className="relative h-full w-full" style={flipStyle}>
+        <div
+          className="absolute inset-0"
+          style={{
+            WebkitMaskImage: edgeFade,
+            maskImage: edgeFade
+          }}
+        />
+
+        <div
+          className="absolute inset-0"
+          style={{ filter: 'drop-shadow(0 6px 18px rgba(0,0,0,0.06))' }}
+        >
+          {band(maskA, y1, layered ? 0.26 : 0.14)}
+          {band(maskB, y2, layered ? 0.22 : 0.12)}
+          {band(maskC, y3, layered ? 0.2 : 0.1)}
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-gradient-to-br from-rose-50 via-violet-50 to-white text-gray-800">
-      {/* soft ambient glow */}
+    <div className="relative min-h-screen overflow-x-hidden bg-gradient-to-br from-[#fcfafc] via-[#f6f2f7] to-white text-gray-800">
+      {/* soft ambient glow (pearl) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-rose-200/30 blur-3xl" />
-        <div className="absolute top-32 right-[-120px] h-[420px] w-[420px] rounded-full bg-sky-200/35 blur-3xl" />
-        <div className="absolute bottom-[-160px] left-[-140px] h-[520px] w-[520px] rounded-full bg-violet-200/25 blur-3xl" />
+        <div className="absolute -top-28 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-rose-200/18 blur-3xl" />
+        <div className="absolute top-40 right-[-140px] h-[480px] w-[480px] rounded-full bg-sky-200/20 blur-3xl" />
+        <div className="absolute bottom-[-180px] left-[-160px] h-[560px] w-[560px] rounded-full bg-violet-200/16 blur-3xl" />
+        <div className="absolute inset-0 bg-white/35" />
       </div>
       <header className="relative px-6 pt-6 pb-4 text-center flex flex-col items-center gap-2">
         {/* subtle header sheen */}
@@ -102,79 +187,39 @@ export default function VoicePathways() {
       </header>
 
       <main id="home" className="relative max-w-5xl mx-auto grid gap-16 px-5 sm:px-6 py-10 z-10">
-        {/* Margin art (current file: abstract florals) */}
+        {/* Margin identity (logo-based) */}
         <motion.div
           aria-hidden="true"
+          className="pointer-events-none fixed top-0 bottom-0 left-0 w-28 sm:w-32 opacity-90 z-0"
           style={{ y: leftBg }}
-          className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-10 z-0"
         >
-          <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M70 0c30 80-30 160-10 260 20 100-40 200-20 320 20 120 10 200 10 320"
-              stroke="#7DD3FC"
-              strokeWidth="18"
-              fill="none"
-            />
-          </svg>
+          <LogoMargin side="left" scrollY={scrollY} />
         </motion.div>
 
         <motion.div
           aria-hidden="true"
+          className="pointer-events-none fixed top-0 bottom-0 left-0 w-28 sm:w-32 opacity-95 z-0"
           style={{ y: leftY, x: leftDrift }}
           transition={{ type: 'spring', stiffness: 25, damping: 18 }}
-          className="pointer-events-none fixed top-0 bottom-0 left-0 w-32 opacity-75 z-0"
         >
-          <svg viewBox="0 0 160 1000" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#BAE6FD">
-              <path d="M80 80c20 40-30 70-30 110 0 30 30 50 30 50s30-20 30-50c0-40-50-70-30-110z" />
-              <path
-                d="M95 140c25 35-20 65-20 95 0 25 20 40 20 40s20-15 20-40c0-30-40-60-20-95z"
-                fill="#F9A8D4"
-                opacity="0.75"
-              />
-              <path d="M75 250c30 40-20 70-10 110 10 40 40 60 40 60s20-30 10-60c-10-40-50-70-40-110z" opacity="0.7" />
-              <path d="M100 420c25 45-30 85-10 130 15 35 45 45 45 45s20-35 5-70c-20-45-65-70-40-105z" opacity="0.8" />
-              <path d="M70 580c20 40-25 70-10 110 10 30 35 45 35 45s15-25 5-50c-15-40-50-65-30-105z" opacity="0.65" />
-              <path d="M88 720c24 42-28 78-10 120 12 28 38 38 38 38s18-28 6-56c-18-42-56-68-34-102z" opacity="0.75" />
-            </g>
-          </svg>
+          <LogoMargin side="left" scrollY={scrollY} layered />
         </motion.div>
 
         <motion.div
           aria-hidden="true"
+          className="pointer-events-none fixed top-0 bottom-0 right-0 w-28 sm:w-32 opacity-90 z-0"
           style={{ y: rightBg }}
-          className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-10 z-0"
         >
-          <svg viewBox="0 0 140 900" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M70 0c-30 80 30 160 10 260-20 100 40 200 20 320-20 120-10 200-10 320"
-              stroke="#F9A8D4"
-              strokeWidth="18"
-              fill="none"
-            />
-          </svg>
+          <LogoMargin side="right" scrollY={scrollY} />
         </motion.div>
 
         <motion.div
           aria-hidden="true"
+          className="pointer-events-none fixed top-0 bottom-0 right-0 w-28 sm:w-32 opacity-95 z-0"
           style={{ y: rightY, x: rightDrift }}
           transition={{ type: 'spring', stiffness: 22, damping: 20 }}
-          className="pointer-events-none fixed top-0 bottom-0 right-0 w-32 opacity-75 z-0"
         >
-          <svg viewBox="0 0 160 1000" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#7DD3FC">
-              <path d="M80 100c-20 40 30 70 30 110 0 30-30 50-30 50s-30-20-30-50c0-40 50-70 30-110z" />
-              <path
-                d="M65 155c-25 35 20 65 20 95 0 25-20 40-20 40s-20-15-20-40c0-30 40-60 20-95z"
-                fill="#FBCFE8"
-                opacity="0.75"
-              />
-              <path d="M85 270c-30 40 20 70 10 110-10 40-40 60-40 60s-20-30-10-60c10-40 50-70 40-110z" opacity="0.7" />
-              <path d="M60 440c-25 45 30 85 10 130-15 35-45 45-45 45s-20-35-5-70c20-45 65-70 40-105z" opacity="0.8" />
-              <path d="M90 600c-20 40 25 70 10 110-10 30-35 45-35 45s-15-25-5-50c15-40 50-65 30-105z" opacity="0.65" />
-              <path d="M72 740c-24 42 28 78 10 120-12 28-38 38-38 38s-18-28-6-56c18-42 56-68 34-102z" opacity="0.75" />
-            </g>
-          </svg>
+          <LogoMargin side="right" scrollY={scrollY} layered />
         </motion.div>
 
         {/* Welcome */}
