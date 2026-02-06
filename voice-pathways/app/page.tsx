@@ -70,85 +70,90 @@ export default function VoicePathways() {
 
   function LogoMargin({
     side,
-    scrollY,
-    layered = false
+    scrollY
   }: {
     side: 'left' | 'right'
     scrollY: any
-    layered?: boolean
   }) {
-    // Gentle vertical glide (kept mostly vertical, tiny rotation)
-    const y1 = useTransform(scrollY, [0, 3000], [0, layered ? -180 : -90])
-    const y2 = useTransform(scrollY, [0, 3000], [0, layered ? -120 : -60])
-    const y3 = useTransform(scrollY, [0, 3000], [0, layered ? -70 : -35])
-    const rot = useTransform(scrollY, [0, 3000], [0, side === 'left' ? 0.8 : -0.8])
+    // We render ONE logo (no tiling) and split it into drifting horizontal bands.
+    // This keeps the motif meaningful and avoids the “overlapping copies” look.
 
-    const baseStyle: any = {
-      backgroundImage: "url('/logo.png')",
-      backgroundRepeat: 'repeat-y',
-      backgroundSize: '140px auto',
-      backgroundPositionX: side === 'left' ? '20%' : '80%'
-    }
+    // Vertical “ice” glide offsets per band (out of sync)
+    const b1 = useTransform(scrollY, [0, 3000], [0, -46])
+    const b2 = useTransform(scrollY, [0, 3000], [0, -28])
+    const b3 = useTransform(scrollY, [0, 3000], [0, -12])
 
-    // Flip vertically + mirror between sides for variation
-    const flipStyle: any = {
-      transform:
-        side === 'right'
-          ? 'scaleX(-1) scaleY(-1)'
-          : 'scaleY(-1)'
-    }
+    // Very small rotation drift (kept upright; no diagonal motion)
+    const rot = useTransform(scrollY, [0, 3000], [0, side === 'left' ? 0.25 : -0.25])
 
-    const band = (mask: string, y: any, opacity: number) => (
-      <motion.div
-        className="absolute inset-0"
-        style={{ ...baseStyle, y, rotate: rot, opacity }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            WebkitMaskImage: mask,
-            maskImage: mask,
-            WebkitMaskRepeat: 'repeat',
-            maskRepeat: 'repeat',
-            WebkitMaskSize: '100% 220px',
-            maskSize: '100% 220px'
-          }}
-        />
-      </motion.div>
-    )
-
-    // Alternating “slices” so internal separations drift out of sync
-    const maskA =
-      'linear-gradient(to bottom, rgba(0,0,0,1) 0 38%, rgba(0,0,0,0) 38% 62%, rgba(0,0,0,1) 62% 100%)'
-    const maskB =
-      'linear-gradient(to bottom, rgba(0,0,0,0) 0 22%, rgba(0,0,0,1) 22% 52%, rgba(0,0,0,0) 52% 78%, rgba(0,0,0,1) 78% 100%)'
-    const maskC =
-      'linear-gradient(to bottom, rgba(0,0,0,1) 0 18%, rgba(0,0,0,0) 18% 46%, rgba(0,0,0,1) 46% 72%, rgba(0,0,0,0) 72% 100%)'
-
-    const edgeFade =
-      side === 'left'
-        ? 'linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))'
-        : 'linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0))'
+    // Flip vertically as requested; mirror on right for variety.
+    const flip = side === 'right' ? 'scale(-1, -1)' : 'scale(1, -1)'
 
     return (
-      <div className="relative h-full w-full" style={flipStyle}>
-        <div
-          className="absolute inset-0"
-          style={{
-            WebkitMaskImage: edgeFade,
-            maskImage: edgeFade
-          }}
-        />
+      <svg
+        className="h-full w-full"
+        viewBox="0 0 140 1600"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <defs>
+          {/* band clip masks (3 slices) */}
+          <clipPath id={`logoBandA-${side}`}>
+            <rect x="0" y="0" width="140" height="520" rx="14" />
+          </clipPath>
+          <clipPath id={`logoBandB-${side}`}>
+            <rect x="0" y="520" width="140" height="560" rx="14" />
+          </clipPath>
+          <clipPath id={`logoBandC-${side}`}>
+            <rect x="0" y="1080" width="140" height="520" rx="14" />
+          </clipPath>
 
-        <div
-          className="absolute inset-0"
-          style={{ filter: 'drop-shadow(0 6px 18px rgba(0,0,0,0.06))' }}
-        >
-          {band(maskA, y1, layered ? 0.26 : 0.14)}
-          {band(maskB, y2, layered ? 0.22 : 0.12)}
-          {band(maskC, y3, layered ? 0.2 : 0.1)}
-        </div>
-      </div>
+          {/* soft edge fade so it blends into the page */}
+          <linearGradient id={`edgeFade-${side}`} x1="0" y1="0" x2="1" y2="0">
+            {side === 'left' ? (
+              <>
+                <stop offset="0%" stopColor="white" stopOpacity="1" />
+                <stop offset="100%" stopColor="white" stopOpacity="0" />
+              </>
+            ) : (
+              <>
+                <stop offset="0%" stopColor="white" stopOpacity="0" />
+                <stop offset="100%" stopColor="white" stopOpacity="1" />
+              </>
+            )}
+          </linearGradient>
+
+          <mask id={`fadeMask-${side}`}>
+            <rect x="0" y="0" width="140" height="1600" fill={`url(#edgeFade-${side})`} />
+          </mask>
+        </defs>
+
+        <g mask={`url(#fadeMask-${side})`} opacity="0.95">
+          {/* A subtle shadow to lift it off the background */}
+          <g style={{ filter: 'drop-shadow(0 10px 24px rgba(0,0,0,0.06))' }}>
+            {/* Band A */}
+            <motion.g clipPath={`url(#logoBandA-${side})`} style={{ y: b1, rotate: rot, transformOrigin: '70px 800px' }}>
+              <g transform={flip} transform-origin="70 800">
+                <image href="/logo.png" x="0" y="220" width="140" height="1160" preserveAspectRatio="xMidYMid meet" opacity="0.22" />
+              </g>
+            </motion.g>
+
+            {/* Band B */}
+            <motion.g clipPath={`url(#logoBandB-${side})`} style={{ y: b2, rotate: rot, transformOrigin: '70px 800px' }}>
+              <g transform={flip} transform-origin="70 800">
+                <image href="/logo.png" x="0" y="220" width="140" height="1160" preserveAspectRatio="xMidYMid meet" opacity="0.20" />
+              </g>
+            </motion.g>
+
+            {/* Band C */}
+            <motion.g clipPath={`url(#logoBandC-${side})`} style={{ y: b3, rotate: rot, transformOrigin: '70px 800px' }}>
+              <g transform={flip} transform-origin="70 800">
+                <image href="/logo.png" x="0" y="220" width="140" height="1160" preserveAspectRatio="xMidYMid meet" opacity="0.18" />
+              </g>
+            </motion.g>
+          </g>
+        </g>
+      </svg>
     )
   }
 
@@ -187,39 +192,23 @@ export default function VoicePathways() {
       </header>
 
       <main id="home" className="relative max-w-5xl mx-auto grid gap-16 px-5 sm:px-6 py-10 z-10">
-        {/* Margin identity (logo-based) */}
+        {/* Margin identity (logo-based, single motif with drifting slices) */}
         <motion.div
           aria-hidden="true"
           className="pointer-events-none fixed top-0 bottom-0 left-0 w-28 sm:w-32 opacity-90 z-0"
-          style={{ y: leftBg }}
+          style={{ y: leftY, x: leftDrift }}
+          transition={{ type: 'spring', stiffness: 25, damping: 18 }}
         >
           <LogoMargin side="left" scrollY={scrollY} />
         </motion.div>
 
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none fixed top-0 bottom-0 left-0 w-28 sm:w-32 opacity-95 z-0"
-          style={{ y: leftY, x: leftDrift }}
-          transition={{ type: 'spring', stiffness: 25, damping: 18 }}
-        >
-          <LogoMargin side="left" scrollY={scrollY} layered />
-        </motion.div>
-
-        <motion.div
-          aria-hidden="true"
           className="pointer-events-none fixed top-0 bottom-0 right-0 w-28 sm:w-32 opacity-90 z-0"
-          style={{ y: rightBg }}
-        >
-          <LogoMargin side="right" scrollY={scrollY} />
-        </motion.div>
-
-        <motion.div
-          aria-hidden="true"
-          className="pointer-events-none fixed top-0 bottom-0 right-0 w-28 sm:w-32 opacity-95 z-0"
           style={{ y: rightY, x: rightDrift }}
           transition={{ type: 'spring', stiffness: 22, damping: 20 }}
         >
-          <LogoMargin side="right" scrollY={scrollY} layered />
+          <LogoMargin side="right" scrollY={scrollY} />
         </motion.div>
 
         {/* Welcome */}
