@@ -31,6 +31,7 @@ export default function VoicePathways() {
   // Application
   const [aLoading, setALoading] = useState(false)
   const aSubmittingRef = useRef(false)
+  const aAttemptRef = useRef(0)
   const [aSubmitted, setASubmitted] = useState(false)
   const [aError, setAError] = useState<string | null>(null)
 
@@ -266,6 +267,11 @@ export default function VoicePathways() {
                 className="mt-6 grid gap-3 max-w-md mx-auto"
                 onSubmit={async (e) => {
                   e.preventDefault()
+                  e.stopPropagation()
+
+                  // Track the latest submit attempt so stale responses can't set mixed UI state
+                  aAttemptRef.current += 1
+                  const attemptId = aAttemptRef.current
 
                   // Hard-block double submits (double-click / Enter / slow network)
                   if (aSubmittingRef.current) return
@@ -287,26 +293,35 @@ export default function VoicePathways() {
 
                     if (!res.ok) {
                       const data = await res.json().catch(() => null)
-                      setASubmitted(false)
-                      setAError(
-                        data?.error ||
-                          'Hmm—something went wrong sending your application. Please try again in a moment.'
-                      )
+
+                      if (attemptId === aAttemptRef.current) {
+                        setASubmitted(false)
+                        setAError(
+                          data?.error ||
+                            'Hmm—something went wrong sending your application. Please try again in a moment.'
+                        )
+                      }
                       return
                     }
 
                     // Success
-                    setAError(null)
-                    setASubmitted(true)
-                    e.currentTarget.reset()
+                    if (attemptId === aAttemptRef.current) {
+                      setAError(null)
+                      setASubmitted(true)
+                      e.currentTarget.reset()
+                    }
                   } catch (err) {
                     console.error('Application submit exception:', err)
-                    setASubmitted(false)
-                    setAError(
+                    if (attemptId === aAttemptRef.current) {
+                      setASubmitted(false)
+                      setAError(
                       'Hmm—something went wrong sending your application. Please try again in a moment.'
                     )
+                   } 
                   } finally {
-                    setALoading(false)
+                    if (attemptId === aAttemptRef.current) {
+                      setALoading(false)
+                    }
                     aSubmittingRef.current = false
                   }
                 }}
@@ -470,4 +485,3 @@ export default function VoicePathways() {
     </div>
   )
 }
-
