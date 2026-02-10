@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
 export default function VoicePathways() {
@@ -30,6 +30,7 @@ export default function VoicePathways() {
 
   // Application
   const [aLoading, setALoading] = useState(false)
+  const aSubmittingRef = useRef(false)
   const [aSubmitted, setASubmitted] = useState(false)
   const [aError, setAError] = useState<string | null>(null)
 
@@ -265,7 +266,11 @@ export default function VoicePathways() {
                 className="mt-6 grid gap-3 max-w-md mx-auto"
                 onSubmit={async (e) => {
                   e.preventDefault()
-                  if (aLoading) return
+
+                  // Hard-block double submits (double-click / Enter / slow network)
+                  if (aSubmittingRef.current) return
+                  aSubmittingRef.current = true
+
                   setASubmitted(false)
                   setAError(null)
 
@@ -282,24 +287,27 @@ export default function VoicePathways() {
 
                     if (!res.ok) {
                       const data = await res.json().catch(() => null)
+                      setASubmitted(false)
                       setAError(
                         data?.error ||
                           'Hmm—something went wrong sending your application. Please try again in a moment.'
                       )
                       return
-                      setASubmitted(false)
                     }
 
+                    // Success
+                    setAError(null)
                     setASubmitted(true)
                     e.currentTarget.reset()
                   } catch (err) {
                     console.error('Application submit exception:', err)
+                    setASubmitted(false)
                     setAError(
                       'Hmm—something went wrong sending your application. Please try again in a moment.'
                     )
                   } finally {
                     setALoading(false)
-                    setASubmitted(false)
+                    aSubmittingRef.current = false
                   }
                 }}
               >
@@ -462,3 +470,4 @@ export default function VoicePathways() {
     </div>
   )
 }
+
