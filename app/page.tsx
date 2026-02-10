@@ -30,6 +30,7 @@ export default function VoicePathways() {
 
   // Application
   const [aLoading, setALoading] = useState(false)
+  const appFormRef = useRef<HTMLFormElement | null>(null)
   const aSubmittingRef = useRef(false)
   const aAttemptRef = useRef(0)
   const aHasSucceededRef = useRef(false)
@@ -265,12 +266,18 @@ export default function VoicePathways() {
               </p>
 
               <form
+                ref={appFormRef}
                 className="mt-6 grid gap-3 max-w-md mx-auto"
                 onSubmit={async (e) => {
                   e.preventDefault()
 
-                  // Capture the form element immediately (avoids `e.currentTarget` becoming null)
-                  const form = e.currentTarget as HTMLFormElement
+                  // Use the ref instead of the event (avoids `e.currentTarget` becoming null entirely)
+                  const form = appFormRef.current
+                  if (!form) {
+                    setASubmitted(false)
+                    setAError('Hmm—something went wrong sending your application. Please try again in a moment.')
+                    return
+                  }
 
                   // Prevent any accidental duplicate submits (including framework retries)
                   if (aSubmittingRef.current) return
