@@ -269,14 +269,15 @@ export default function VoicePathways() {
                   e.preventDefault()
                   e.stopPropagation()
 
+                  // Prevent any accidental duplicate submits (including framework retries)
+                  if (aSubmittingRef.current) return
+                  aSubmittingRef.current = true
+
                   // Track the latest submit attempt so stale responses can't set mixed UI state
                   aAttemptRef.current += 1
                   const attemptId = aAttemptRef.current
 
-                  // Hard-block double submits (double-click / Enter / slow network)
-                  if (aSubmittingRef.current) return
-                  aSubmittingRef.current = true
-
+                  // Clear messages for this new attempt
                   setASubmitted(false)
                   setAError(null)
 
@@ -285,6 +286,7 @@ export default function VoicePathways() {
 
                   try {
                     setALoading(true)
+
                     const res = await fetch('/api/apply', {
                       method: 'POST',
                       headers: { 'Content-Type': 'application/json' },
@@ -293,7 +295,6 @@ export default function VoicePathways() {
 
                     if (!res.ok) {
                       const data = await res.json().catch(() => null)
-
                       if (attemptId === aAttemptRef.current) {
                         setASubmitted(false)
                         setAError(
@@ -315,9 +316,9 @@ export default function VoicePathways() {
                     if (attemptId === aAttemptRef.current) {
                       setASubmitted(false)
                       setAError(
-                      'Hmm—something went wrong sending your application. Please try again in a moment.'
-                    )
-                   } 
+                        'Hmm—something went wrong sending your application. Please try again in a moment.'
+                      )
+                    }
                   } finally {
                     if (attemptId === aAttemptRef.current) {
                       setALoading(false)
