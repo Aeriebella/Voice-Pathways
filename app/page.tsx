@@ -32,6 +32,7 @@ export default function VoicePathways() {
   const [aLoading, setALoading] = useState(false)
   const aSubmittingRef = useRef(false)
   const aAttemptRef = useRef(0)
+  const aHasSucceededRef = useRef(false)
   const [aSubmitted, setASubmitted] = useState(false)
   const [aError, setAError] = useState<string | null>(null)
 
@@ -278,6 +279,7 @@ export default function VoicePathways() {
                   const attemptId = aAttemptRef.current
 
                   // Clear messages for this new attempt
+                  aHasSucceededRef.current = false
                   setASubmitted(false)
                   setAError(null)
 
@@ -295,7 +297,7 @@ export default function VoicePathways() {
 
                     if (!res.ok) {
                       const data = await res.json().catch(() => null)
-                      if (attemptId === aAttemptRef.current) {
+                      if (attemptId === aAttemptRef.current && !aHasSucceededRef.current) {
                         setASubmitted(false)
                         setAError(
                           data?.error ||
@@ -307,13 +309,14 @@ export default function VoicePathways() {
 
                     // Success
                     if (attemptId === aAttemptRef.current) {
+                      aHasSucceededRef.current = true
                       setAError(null)
                       setASubmitted(true)
                       e.currentTarget.reset()
                     }
                   } catch (err) {
                     console.error('Application submit exception:', err)
-                    if (attemptId === aAttemptRef.current) {
+                    if (attemptId === aAttemptRef.current && !aHasSucceededRef.current) {
                       setASubmitted(false)
                       setAError(
                         'Hmm—something went wrong sending your application. Please try again in a moment.'
@@ -347,7 +350,7 @@ export default function VoicePathways() {
                   <p className="text-sm text-center text-emerald-700">Your application has been sent. Thank you.</p>
                 ) : null}
 
-                {aError ? (
+                {aError && !aSubmitted ? (
                   <p className="text-sm text-center text-rose-700">{aError}</p>
                 ) : null}
               </form>
