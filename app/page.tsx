@@ -268,7 +268,9 @@ export default function VoicePathways() {
                 className="mt-6 grid gap-3 max-w-md mx-auto"
                 onSubmit={async (e) => {
                   e.preventDefault()
-                  e.stopPropagation()
+
+                  // Capture the form element immediately (avoids `e.currentTarget` becoming null)
+                  const form = e.currentTarget as HTMLFormElement
 
                   // Prevent any accidental duplicate submits (including framework retries)
                   if (aSubmittingRef.current) return
@@ -283,7 +285,7 @@ export default function VoicePathways() {
                   setASubmitted(false)
                   setAError(null)
 
-                  const formData = new FormData(e.currentTarget)
+                  const formData = new FormData(form)
                   const payload = Object.fromEntries(formData.entries())
 
                   try {
@@ -312,7 +314,7 @@ export default function VoicePathways() {
                       aHasSucceededRef.current = true
                       setAError(null)
                       setASubmitted(true)
-                      e.currentTarget.reset()
+                      form.reset()
                     }
                   } catch (err) {
                     console.error('Application submit exception:', err)
