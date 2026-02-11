@@ -493,8 +493,10 @@ export default function VoicePathways() {
           <a href="#testimonials" className="hover:underline">Testimonials</a>
         </nav>
         <div>© Voice Pathways</div>
+        <div className="text-[10px] opacity-40">build: reset-removed</div>
       </footer>
     </div>
   )
 }
+
 
