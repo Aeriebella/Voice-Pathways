@@ -321,7 +321,6 @@ export default function VoicePathways() {
                       aHasSucceededRef.current = true
                       setAError(null)
                       setASubmitted(true)
-                      form.reset()
                     }
                   } catch (err) {
                     console.error('Application submit exception:', err)
@@ -498,3 +497,4 @@ export default function VoicePathways() {
     </div>
   )
 }
+
