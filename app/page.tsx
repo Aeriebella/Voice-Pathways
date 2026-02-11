@@ -321,7 +321,11 @@ export default function VoicePathways() {
                       aHasSucceededRef.current = true
                       setAError(null)
                       setASubmitted(true)
-                      // form.reset() // temporarily disabled while debugging deployment/runtime issues
+                      try {
+                      form.reset()
+                    } catch (err) {
+                      console.warn('Form reset failed:', err)
+                    }
                     }
                   } catch (err) {
                     console.error('Application submit exception:', err)
@@ -494,7 +498,6 @@ export default function VoicePathways() {
           <a href="#testimonials" className="hover:underline">Testimonials</a>
         </nav>
         <div>© Voice Pathways</div>
-        <div className="text-[10px] opacity-40">build: reset-removed</div>
       </footer>
     </div>
   )
