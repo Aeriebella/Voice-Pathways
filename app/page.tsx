@@ -81,10 +81,10 @@ export default function VoicePathways() {
         <div className="absolute bottom-[-180px] left-[-160px] h-[560px] w-[560px] rounded-full bg-violet-200/16 blur-3xl" />
         <div className="absolute inset-0 bg-white/35" />
       </div>
-      <header className="relative px-6 pt-6 pb-4 text-center flex flex-col items-center gap-2">
+      <header className="relative px-4 sm:px-6 pt-6 pb-4 text-center flex flex-col items-center gap-2">
         {/* subtle header sheen */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/70 to-transparent" />
-        <nav className="mt-1 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-700/80 rounded-full border border-white/60 bg-white/40 px-5 py-2 shadow-sm backdrop-blur">
+        <nav className="mt-1 max-w-full flex items-center justify-start sm:justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-sm text-gray-700/80 rounded-full border border-white/60 bg-white/40 px-4 sm:px-5 py-2 shadow-sm backdrop-blur overflow-x-auto">
           <a href="#home" className="hover:underline">Home</a>
           <a href="#services" className="hover:underline">Services</a>
           <a href="#about" className="hover:underline">About</a>
@@ -95,10 +95,10 @@ export default function VoicePathways() {
         <img
           src="/logo.png"
           alt="Voice Pathways logo"
-          className="h-48 w-auto -mb-1 mt-2 opacity-95 drop-shadow-sm"
+          className="h-36 sm:h-48 w-auto -mb-1 mt-2 opacity-95 drop-shadow-sm"
         />
 
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-wide font-['Playfair_Display']">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-wide font-['Playfair_Display']">
           Voice Pathways
         </h1>
         <p className="mt-2 text-base tracking-wide text-gray-600">
@@ -108,7 +108,7 @@ export default function VoicePathways() {
       {/* Margin motifs (stationary): rotated logos stay fixed while page scrolls behind */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-y-0 left-0 w-72 sm:w-80 opacity-95 z-0 flex items-center justify-center overflow-visible"
+        className="pointer-events-none fixed inset-y-0 left-0 hidden lg:flex w-72 xl:w-80 opacity-95 z-0 items-center justify-center overflow-visible"
       >
         <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
           <div className="h-80 w-80 rounded-full bg-gradient-to-br from-sky-200/35 to-pink-200/35 blur-3xl" />
@@ -125,7 +125,7 @@ export default function VoicePathways() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-y-0 right-0 w-72 sm:w-80 opacity-95 z-0 flex items-center justify-center overflow-visible"
+        className="pointer-events-none fixed inset-y-0 right-0 hidden lg:flex w-72 xl:w-80 opacity-95 z-0 items-center justify-center overflow-visible"
       >
         <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
           <div className="h-80 w-80 rounded-full bg-gradient-to-br from-pink-200/35 to-sky-200/35 blur-3xl" />
@@ -140,7 +140,7 @@ export default function VoicePathways() {
         />
       </div>
 
-      <main id="home" className="relative max-w-5xl mx-auto grid gap-16 px-5 sm:px-6 py-10 z-10">
+      <main id="home" className="relative max-w-5xl mx-auto grid gap-12 sm:gap-16 px-4 sm:px-6 py-8 sm:py-10 z-10">
         {/* Welcome */}
         <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <Card className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60">
@@ -164,7 +164,7 @@ export default function VoicePathways() {
 
         {/* Divider */}
         <div className="flex justify-center">
-          <svg className="h-10 w-full max-w-xl" viewBox="0 0 300 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className="h-10 w-full max-w-2xl" viewBox="0 0 300 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 20 C15 5 30 35 45 20 S75 5 90 20 S120 35 135 20 S165 5 180 20 S210 35 225 20 S255 5 270 20 S285 30 300 20" stroke="#FBCFE8" strokeWidth="1.5" fill="none" />
             <path d="M0 20 C15 15 30 25 45 20 S75 15 90 20 S120 25 135 20 S165 15 180 20 S210 25 225 20 S255 15 270 20 S285 25 300 20" stroke="#E9D5FF" strokeWidth="1" fill="none" opacity="0.6" />
           </svg>
@@ -177,7 +177,7 @@ export default function VoicePathways() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {[
             {
@@ -224,7 +224,7 @@ export default function VoicePathways() {
 
         {/* Divider */}
         <div className="flex justify-center">
-          <svg className="h-7 w-full max-w-md" viewBox="0 0 210 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className="h-7 w-full max-w-xl" viewBox="0 0 210 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 14h75c15 0 22-10 30-10s15 10 30 10h75" stroke="#FBCFE8" strokeWidth="1.5" fill="none" />
           </svg>
         </div>
