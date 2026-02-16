@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -207,52 +207,74 @@ export default function VoicePathways() {
               title: 'Ongoing Care',
               desc: "During your time with Voice Pathways, you'll be encouraged to exchange voice clips for ongoing feedback and supportive guidance."
             }
-          ].map((item) => (
-            <motion.div
-              key={item.title}
-              whileHover={{ y: -6 }}
-              transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-            >
-              <Card
-                className="rounded-2xl shadow group hover:shadow-xl transition border border-white/60 bg-white/70 backdrop-blur"
-                onClick={() => {
-                  // Mobile/touch: tap to toggle details
-                  if (typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches) {
-                    setOpenService((prev) => (prev === item.title ? null : item.title))
-                  }
-                }}
-              >
-                <CardContent className="p-4 text-center">
-                  <h3 className="font-semibold">{item.title}</h3>
-                  {/* Mobile: tap-to-expand */}
-                  <button
-                    type="button"
-                    className="mt-2 md:hidden text-xs text-gray-700/80 underline underline-offset-4"
-                    aria-expanded={openService === item.title}
-                    onClick={(ev) => {
-                      ev.preventDefault()
-                      ev.stopPropagation()
-                      setOpenService((prev) => (prev === item.title ? null : item.title))
-                    }}
-                  >
-                    {openService === item.title ? 'Hide details' : 'View details'}
-                  </button>
+          ].map((item) => {
+            const isOpen = openService === item.title
 
-                  <p
-                    className={
-                      "mt-2 text-sm text-gray-600 transition-all duration-300 overflow-hidden " +
-                      // Desktop: hover reveal
-                      "md:opacity-0 md:max-h-0 md:group-hover:opacity-100 md:group-hover:max-h-40 " +
-                      // Mobile: tap reveal
-                      (openService === item.title ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0')
+            return (
+              <motion.div
+                key={item.title}
+                whileHover={{ y: -6 }}
+                transition={{ type: 'spring', stiffness: 220, damping: 18 }}
+                animate={{ y: isOpen ? -3 : 0 }}
+              >
+                <Card
+                  className={
+                    "rounded-2xl shadow group hover:shadow-xl transition border border-white/60 bg-white/70 backdrop-blur " +
+                    (isOpen ? 'ring-1 ring-pink-200/60' : '')
+                  }
+                  onClick={() => {
+                    // Touch devices: tap card to toggle details
+                    if (typeof window !== 'undefined') {
+                      const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches
+                      if (isTouch) {
+                        setOpenService((prev) => (prev === item.title ? null : item.title))
+                      }
                     }
-                  >
-                    {item.desc}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                  }}
+                >
+                  <CardContent className="p-4 text-center">
+                    <h3 className="font-semibold flex items-center justify-center gap-2">
+                      {item.title}
+                      {/* Tiny chevron (mobile only) */}
+                      <svg
+                        className={
+                          'md:hidden h-4 w-4 transition-transform duration-300 text-gray-500/80 ' +
+                          (isOpen ? 'rotate-180' : 'rotate-0')
+                        }
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </h3>
+
+                    {/* Desktop: hover reveal */}
+                    <p className="mt-2 text-sm text-gray-600 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-40 transition-all duration-300 overflow-hidden hidden md:block">
+                      {item.desc}
+                    </p>
+
+                    {/* Mobile: tap reveal (animated) */}
+                    <AnimatePresence initial={false}>
+                      {isOpen ? (
+                        <motion.p
+                          key="details"
+                          className="mt-2 text-sm text-gray-600 md:hidden"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.28 }}
+                        >
+                          {item.desc}
+                        </motion.p>
+                      ) : null}
+                    </AnimatePresence>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            )
+          })}
         </motion.section>
 
         {/* Divider */}
