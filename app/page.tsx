@@ -28,6 +28,9 @@ export default function VoicePathways() {
   const [tSubmitted, setTSubmitted] = useState(false)
   const [tError, setTError] = useState<string | null>(null)
 
+  // Services (mobile expand)
+  const [openService, setOpenService] = useState<string | null>(null)
+
   // Application
   const [aLoading, setALoading] = useState(false)
   const appFormRef = useRef<HTMLFormElement | null>(null)
@@ -210,10 +213,40 @@ export default function VoicePathways() {
               whileHover={{ y: -6 }}
               transition={{ type: 'spring', stiffness: 220, damping: 18 }}
             >
-              <Card className="rounded-2xl shadow group hover:shadow-xl transition border border-white/60 bg-white/70 backdrop-blur">
+              <Card
+                className="rounded-2xl shadow group hover:shadow-xl transition border border-white/60 bg-white/70 backdrop-blur"
+                onClick={() => {
+                  // Mobile/touch: tap to toggle details
+                  if (typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches) {
+                    setOpenService((prev) => (prev === item.title ? null : item.title))
+                  }
+                }}
+              >
                 <CardContent className="p-4 text-center">
                   <h3 className="font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm text-gray-600 opacity-0 group-hover:opacity-100 transition">
+                  {/* Mobile: tap-to-expand */}
+                  <button
+                    type="button"
+                    className="mt-2 md:hidden text-xs text-gray-700/80 underline underline-offset-4"
+                    aria-expanded={openService === item.title}
+                    onClick={(ev) => {
+                      ev.preventDefault()
+                      ev.stopPropagation()
+                      setOpenService((prev) => (prev === item.title ? null : item.title))
+                    }}
+                  >
+                    {openService === item.title ? 'Hide details' : 'View details'}
+                  </button>
+
+                  <p
+                    className={
+                      "mt-2 text-sm text-gray-600 transition-all duration-300 overflow-hidden " +
+                      // Desktop: hover reveal
+                      "md:opacity-0 md:max-h-0 md:group-hover:opacity-100 md:group-hover:max-h-40 " +
+                      // Mobile: tap reveal
+                      (openService === item.title ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0')
+                    }
+                  >
                     {item.desc}
                   </p>
                 </CardContent>
@@ -322,10 +355,10 @@ export default function VoicePathways() {
                       setAError(null)
                       setASubmitted(true)
                       try {
-                      form.reset()
-                    } catch (err) {
-                      console.warn('Form reset failed:', err)
-                    }
+                        form.reset()
+                      } catch (err) {
+                        console.warn('Form reset failed:', err)
+                      }
                     }
                   } catch (err) {
                     console.error('Application submit exception:', err)
