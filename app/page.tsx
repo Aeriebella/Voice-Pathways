@@ -93,6 +93,7 @@ export default function VoicePathways() {
           <a href="#about" className="hover:underline">About</a>
           <a href="#apply" className="hover:underline">Apply</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
+          <a href="https://patreon.com/VoicePathways" target="_blank" rel="noopener noreferrer" className="hover:underline">Patreon</a>
         </nav>
 
         <img
@@ -551,6 +552,7 @@ export default function VoicePathways() {
           <a href="#about" className="hover:underline">About</a>
           <a href="#apply" className="hover:underline">Apply</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
+          <a href="https://patreon.com/VoicePathways" target="_blank" rel="noopener noreferrer" className="hover:underline">Patreon</a>
         </nav>
         <div>© Voice Pathways</div>
       </footer>
