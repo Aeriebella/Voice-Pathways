@@ -85,13 +85,15 @@ export default function VoicePathways() {
         <meta property="og:title" content="Voice Pathways | Vocal Feminization & Trans Voice Training" />
         <meta property="og:description" content="Professional vocal feminization and transgender voice coaching. Compassionate, results-focused training for authentic vocal transformation." />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.voicepathways.com" />
+        <link rel="canonical" href="https://www.voicepathways.com" />
         <meta name="robots" content="index, follow" />
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'EducationalOrganization',
             name: 'Voice Pathways',
-            url: 'https://voicepathways.com',
+            url: 'https://www.voicepathways.com',
             description: 'Professional vocal feminization and transgender voice training services specializing in MtF voice development and gender affirming voice coaching.'
           })}
         </script>
