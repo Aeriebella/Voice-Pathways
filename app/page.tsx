@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '@/lib/supabase'
+import Head from 'next/head'
 
 export default function VoicePathways() {
   const { scrollY } = useScroll()
@@ -76,7 +77,26 @@ export default function VoicePathways() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-gradient-to-br from-[#fcfafc] via-[#f6f2f7] to-white text-gray-800">
+    <>
+      <Head>
+        <title>Voice Pathways | Vocal Feminization & Trans Voice Training</title>
+        <meta name="description" content="Voice Pathways offers professional vocal feminization training, MtF voice coaching, transgender voice support, and trans voice development programs designed to help you achieve authentic vocal transformation." />
+        <meta name="keywords" content="Transvoice, Vocal Feminization, MtF Voice, Transgender Voice, Trans Women Voice, Voice Transition Training, Gender Affirming Voice Coaching" />
+        <meta property="og:title" content="Voice Pathways | Vocal Feminization & Trans Voice Training" />
+        <meta property="og:description" content="Professional vocal feminization and transgender voice coaching. Compassionate, results-focused training for authentic vocal transformation." />
+        <meta property="og:type" content="website" />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'EducationalOrganization',
+            name: 'Voice Pathways',
+            url: 'https://voicepathways.com',
+            description: 'Professional vocal feminization and transgender voice training services specializing in MtF voice development and gender affirming voice coaching.'
+          })}
+        </script>
+      </Head>
+      <div className="relative min-h-screen overflow-x-hidden bg-gradient-to-br from-[#fcfafc] via-[#f6f2f7] to-white text-gray-800">
       {/* soft ambient glow (pearl) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -top-28 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-rose-200/18 blur-3xl" />
@@ -557,5 +577,6 @@ export default function VoicePathways() {
         <div>© Voice Pathways</div>
       </footer>
     </div>
+    </>
   )
 }
