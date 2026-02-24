@@ -96,8 +96,7 @@ export default function VoicePathways() {
             url: 'https://www.voicepathways.com',
             description: 'Professional vocal feminization and transgender voice training services specializing in MtF voice development and gender affirming voice coaching.',
             sameAs: [
-              'https://patreon.com/VoicePathways',
-              'https://discord.gg/XusH2zjsy8'
+              'https://patreon.com/VoicePathways',              'https://discord.gg/HPP3stEZCg'
             ]
           })}
         </script>
@@ -135,7 +134,7 @@ export default function VoicePathways() {
             <span className="font-medium">Patreon</span>
           </a>
           <a
-            href="https://discord.gg/XusH2zjsy8"
+            href="https://discord.gg/HPP3stEZCg"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full px-3 py-1 shadow-sm bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition"
@@ -380,7 +379,7 @@ export default function VoicePathways() {
 
               <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
-                  href="https://discord.gg/XusH2zjsy8"
+                  href="https://discord.gg/HPP3stEZCg"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2 shadow-lg bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition active:scale-[0.98]"
@@ -683,7 +682,7 @@ export default function VoicePathways() {
             <span className="font-medium">Patreon</span>
           </a>
           <a
-            href="https://discord.gg/XusH2zjsy8"
+            href="https://discord.gg/HPP3stEZCg"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full px-3 py-1 shadow-sm bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition"
