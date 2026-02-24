@@ -94,7 +94,11 @@ export default function VoicePathways() {
             '@type': 'EducationalOrganization',
             name: 'Voice Pathways',
             url: 'https://www.voicepathways.com',
-            description: 'Professional vocal feminization and transgender voice training services specializing in MtF voice development and gender affirming voice coaching.'
+            description: 'Professional vocal feminization and transgender voice training services specializing in MtF voice development and gender affirming voice coaching.',
+            sameAs: [
+              'https://patreon.com/VoicePathways',
+              'https://discord.gg/XusH2zjsy8'
+            ]
           })}
         </script>
       </Head>
@@ -115,7 +119,38 @@ export default function VoicePathways() {
           <a href="#about" className="hover:underline">About</a>
           <a href="#apply" className="hover:underline">Apply</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
-          <a href="https://patreon.com/VoicePathways" target="_blank" rel="noopener noreferrer" className="hover:underline">Patreon</a>
+          <a
+            href="https://patreon.com/VoicePathways"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/40 px-3 py-1 shadow-sm backdrop-blur hover:bg-white/55 transition"
+          >
+            <svg aria-hidden="true" viewBox="0 0 20 20" className="h-4 w-4 text-pink-300">
+              <path
+                d="M10 17s-6-3.7-8.4-7.5C.2 7 1.5 4.3 4.2 3.6c1.7-.4 3.3.2 4.3 1.4 1-1.2 2.6-1.8 4.3-1.4 2.7.7 4 3.4 2.6 5.9C16 13.3 10 17 10 17z"
+                fill="currentColor"
+                opacity="0.9"
+              />
+            </svg>
+            <span className="font-medium">Patreon</span>
+          </a>
+          <a
+            href="https://discord.gg/XusH2zjsy8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full px-3 py-1 shadow-sm bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition"
+          >
+            <svg aria-hidden="true" viewBox="0 0 20 20" className="h-4 w-4 text-gray-700/80">
+              <path
+                d="M4 4.5h12c1.1 0 2 .9 2 2V13c0 1.1-.9 2-2 2H9l-3.6 2.2c-.6.3-1.4-.1-1.4-.9V15H4c-1.1 0-2-.9-2-2V6.5c0-1.1.9-2 2-2z"
+                fill="currentColor"
+                opacity="0.9"
+              />
+              <path d="M6.3 8.4h7.4" stroke="white" strokeWidth="1.4" strokeLinecap="round" opacity="0.9" />
+              <path d="M6.3 10.7h5.2" stroke="white" strokeWidth="1.4" strokeLinecap="round" opacity="0.9" />
+            </svg>
+            <span className="font-medium">Discord</span>
+          </a>
         </nav>
 
         <img
@@ -323,6 +358,64 @@ export default function VoicePathways() {
                 <br />
                 <br />
                 With over seven years of experience teaching voice, we have worked with students from across the globe and supported a wide range of dialects and accents. This diversity has shaped a flexible, personalized approach that meets you where you are and honors your personal goals.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.section>
+
+        {/* Community */}
+        <motion.section
+          id="community"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <Card className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60">
+            <CardContent className="p-6 text-center">
+              <h2 className="text-2xl font-semibold">Join Our Community</h2>
+              <p className="mt-2 text-gray-700">
+                Connect with fellow learners, ask questions, share wins, and receive gentle support as you practice. Our Discord is a cozy space for encouragement and accountability, and Patreon is where I share deeper tutorials, demonstrations, and clip reviews.
+              </p>
+
+              <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href="https://discord.gg/XusH2zjsy8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2 shadow-lg bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition active:scale-[0.98]"
+                >
+                  <svg aria-hidden="true" viewBox="0 0 20 20" className="h-5 w-5 text-gray-700/80">
+                    <path
+                      d="M4 4.5h12c1.1 0 2 .9 2 2V13c0 1.1-.9 2-2 2H9l-3.6 2.2c-.6.3-1.4-.1-1.4-.9V15H4c-1.1 0-2-.9-2-2V6.5c0-1.1.9-2 2-2z"
+                      fill="currentColor"
+                      opacity="0.9"
+                    />
+                    <path d="M6.3 8.4h7.4" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.9" />
+                    <path d="M6.3 10.7h5.2" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.9" />
+                  </svg>
+                  <span className="font-medium">Join Discord</span>
+                </a>
+
+                <a
+                  href="https://patreon.com/VoicePathways"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2 shadow-lg border border-white/60 bg-white/45 backdrop-blur hover:bg-white/60 transition active:scale-[0.98]"
+                >
+                  <svg aria-hidden="true" viewBox="0 0 20 20" className="h-5 w-5 text-pink-300">
+                    <path
+                      d="M10 17s-6-3.7-8.4-7.5C.2 7 1.5 4.3 4.2 3.6c1.7-.4 3.3.2 4.3 1.4 1-1.2 2.6-1.8 4.3-1.4 2.7.7 4 3.4 2.6 5.9C16 13.3 10 17 10 17z"
+                      fill="currentColor"
+                      opacity="0.9"
+                    />
+                  </svg>
+                  <span className="font-medium">Support on Patreon</span>
+                </a>
+              </div>
+
+              <p className="mt-3 text-xs text-gray-500">
+                (Discord access may require verification — thank you for helping us keep the space safe and supportive.)
               </p>
             </CardContent>
           </Card>
@@ -574,7 +667,38 @@ export default function VoicePathways() {
           <a href="#about" className="hover:underline">About</a>
           <a href="#apply" className="hover:underline">Apply</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
-          <a href="https://patreon.com/VoicePathways" target="_blank" rel="noopener noreferrer" className="hover:underline">Patreon</a>
+          <a
+            href="https://patreon.com/VoicePathways"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/40 px-3 py-1 shadow-sm backdrop-blur hover:bg-white/55 transition"
+          >
+            <svg aria-hidden="true" viewBox="0 0 20 20" className="h-4 w-4 text-pink-300">
+              <path
+                d="M10 17s-6-3.7-8.4-7.5C.2 7 1.5 4.3 4.2 3.6c1.7-.4 3.3.2 4.3 1.4 1-1.2 2.6-1.8 4.3-1.4 2.7.7 4 3.4 2.6 5.9C16 13.3 10 17 10 17z"
+                fill="currentColor"
+                opacity="0.9"
+              />
+            </svg>
+            <span className="font-medium">Patreon</span>
+          </a>
+          <a
+            href="https://discord.gg/XusH2zjsy8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full px-3 py-1 shadow-sm bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition"
+          >
+            <svg aria-hidden="true" viewBox="0 0 20 20" className="h-4 w-4 text-gray-700/80">
+              <path
+                d="M4 4.5h12c1.1 0 2 .9 2 2V13c0 1.1-.9 2-2 2H9l-3.6 2.2c-.6.3-1.4-.1-1.4-.9V15H4c-1.1 0-2-.9-2-2V6.5c0-1.1.9-2 2-2z"
+                fill="currentColor"
+                opacity="0.9"
+              />
+              <path d="M6.3 8.4h7.4" stroke="white" strokeWidth="1.4" strokeLinecap="round" opacity="0.9" />
+              <path d="M6.3 10.7h5.2" stroke="white" strokeWidth="1.4" strokeLinecap="round" opacity="0.9" />
+            </svg>
+            <span className="font-medium">Discord</span>
+          </a>
         </nav>
         <div>© Voice Pathways</div>
       </footer>
