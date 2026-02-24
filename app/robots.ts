@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://voicepathways.com/sitemap.xml',
+    sitemap: 'https://www.voicepathways.com/sitemap.xml',
   }
 }
