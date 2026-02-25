@@ -445,7 +445,9 @@ export default function VoicePathways() {
                     <br /><br />
                     Every voice is different. Our goal is not simply to reach “passing,” but to help you develop a voice you feel proud of — one that feels natural, sustainable, and fully aligned with who you are.
                   </p>
-                                <div>
+                </div>
+
+                <div>
                   <h3 className="font-semibold">How do I access the free lessons on Sundays?</h3>
                   <p className="text-sm text-gray-700 mt-1">
                     To access our free Sunday lessons, simply join our Discord community or submit an application through the website. Free training slots are offered while availability lasts, and Discord is where announcements and coordination take place.
