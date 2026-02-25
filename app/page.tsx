@@ -21,6 +21,9 @@ export default function VoicePathways() {
   // Services (mobile expand)
   const [openService, setOpenService] = useState<string | null>(null)
 
+  // FAQ (accordion)
+  const [openFaq, setOpenFaq] = useState<string | null>(null)
+
   // Margin logo opacity (fade in as you scroll)
   const { scrollYProgress } = useScroll()
   const marginMotifOpacity = useTransform(scrollYProgress, [0, 0.08, 0.45, 1], [0, 0, 0.65, 0.95])
@@ -400,91 +403,192 @@ export default function VoicePathways() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <Card className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-center">Frequently Asked Questions</h2>
-              <div className="mt-6 grid gap-4">
-                <div>
-                  <h3 className="font-semibold">How long does vocal feminization take?</h3>
-                  <p className="text-sm text-gray-700 mt-1">
+          {(() => {
+            const faqItems: Array<{
+              q: string
+              // JSX answer for the page
+              a: React.ReactNode
+              // Plain-text answer for schema
+              schemaA: string
+            }> = [
+              {
+                q: 'How long does vocal feminization take?',
+                a: (
+                  <>
                     Results vary depending on your starting point, consistency, and practice habits. For most students, it takes only <strong>5–8 lessons</strong> to achieve a fully passing voice. The additional lessons beyond that are devoted to refining that new voice — shaping it into something that not only passes, but feels authentic, expressive, and truly your own.
-                    <br /><br />
+                    <br />
+                    <br />
                     When looking at the full journey from beginning to graduation, most students complete the program within <strong>10–15 lessons</strong>. This includes not just achieving a passing voice, but developing confidence, stability, and artistic ownership of it. With exceptional work ethic and focused practice, the process can be exceeded — and to date, the quickest a student has achieved a fully feminized voice and graduated the program was in just <strong>8 lessons</strong>.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold">Do I need surgery to feminize my voice?</h3>
-                  <p className="text-sm text-gray-700 mt-1">
+                  </>
+                ),
+                schemaA:
+                  'Results vary depending on your starting point, consistency, and practice habits. For most students, it takes only 5–8 lessons to achieve a fully passing voice. Additional lessons refine that new voice so it feels authentic and truly your own. For the full journey from beginning to graduation, most students complete the program within 10–15 lessons. With exceptional work ethic and focused practice, this can be exceeded — and the quickest completion to date was 8 lessons.'
+              },
+              {
+                q: 'Do I need surgery to feminize my voice?',
+                a: (
+                  <>
                     No. Total vocal feminization through structured training can exceed even the best results achievable with surgery alone. Surgery primarily affects baseline pitch and aspects of vocal tract size, but it does not address the full range of skills that create a naturally feminized voice — such as resonance shaping, speech patterns, articulation, inflection, and expressive control.
-                    <br /><br />
-                    Training carries no surgical risk, requires no recovery time, and is significantly more affordable. In fact, many individuals who undergo vocal surgery still require vocal training afterward to refine their results. Additionally, some surgical procedures may impact singing ability — whereas vocal training preserves and even enhances it. With proper guidance and practice, you can learn to speak and sing comfortably in your preferred gender without surgical intervention.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold">Are lessons available online?</h3>
-                  <p className="text-sm text-gray-700 mt-1">
-                    Yes. All coaching is available online, allowing students across the globe to receive personalized guidance and support.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold">Is vocal feminization safe?</h3>
-                  <p className="text-sm text-gray-700 mt-1">
-                    Yes — when approached with healthy technique and proper guidance. Lessons emphasize vocal sustainability, minimizing strain, and building habits that feel natural and comfortable in everyday speech.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold">How many lessons will I need?</h3>
-                  <p className="text-sm text-gray-700 mt-1">
+                    <br />
+                    <br />
+                    Training carries no surgical risk, requires no recovery time, and is significantly more affordable. Many individuals who undergo vocal surgery still require vocal training afterward to refine their results. Additionally, some surgical procedures may impact singing ability — whereas vocal training preserves and even enhances it. With proper guidance and practice, you can learn to speak and sing comfortably in your preferred gender without surgical intervention.
+                  </>
+                ),
+                schemaA:
+                  'No. Total vocal feminization through structured training can exceed the best results achievable with surgery alone. Surgery mainly affects baseline pitch and aspects of vocal tract size, but it does not address skills like resonance shaping, speech patterns, articulation, inflection, and expressive control. Training has no surgical risk or recovery time and is typically more affordable. Many people still need training after surgery to refine results, and some procedures can impact singing — whereas training preserves and can enhance it.'
+              },
+              {
+                q: 'Are lessons available online?',
+                a: <>Yes. All coaching is available online, allowing students across the globe to receive personalized guidance and support.</>,
+                schemaA:
+                  'Yes. All coaching is available online, allowing students across the globe to receive personalized guidance and support.'
+              },
+              {
+                q: 'Is vocal feminization safe?',
+                a: (
+                  <>Yes — when approached with healthy technique and proper guidance. Lessons emphasize vocal sustainability, minimizing strain, and building habits that feel natural and comfortable in everyday speech.</>
+                ),
+                schemaA:
+                  'Yes — when approached with healthy technique and proper guidance. Lessons emphasize vocal sustainability, minimizing strain, and building habits that feel natural and comfortable in everyday speech.'
+              },
+              {
+                q: 'How many lessons will I need?',
+                a: (
+                  <>
                     The number of lessons depends entirely on where you are starting. Students beginning with no prior experience typically graduate within <strong>10–15 lessons</strong>.
-                    <br /><br />
+                    <br />
+                    <br />
                     If you already have a partially passing voice, most students require closer to <strong>8–10 lessons</strong> to refine and stabilize it. For those who are already consistently passing but wish to elevate their voice further — improving nuance, confidence, and artistic expression — as few as <strong>3–5 lessons</strong> may be needed.
-                    <br /><br />
+                    <br />
+                    <br />
                     Every voice is different. Our goal is not simply to reach “passing,” but to help you develop a voice you feel proud of — one that feels natural, sustainable, and fully aligned with who you are.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold">How do I access the free lessons on Sundays?</h3>
-                  <p className="text-sm text-gray-700 mt-1">
+                  </>
+                ),
+                schemaA:
+                  'It depends on where you are starting. Students with no prior experience typically graduate within 10–15 lessons. If you already have a partially passing voice, many students need closer to 8–10 lessons to refine and stabilize it. If you are already consistently passing and want greater nuance and expression, as few as 3–5 lessons may be needed. The goal is not only to reach passing, but to develop a voice that feels natural, sustainable, and aligned with you.'
+              },
+              {
+                q: 'How do I access the free lessons on Sundays?',
+                a: (
+                  <>
                     To access our free Sunday lessons, simply join our Discord community or submit an application through the website. Free training slots are offered while availability lasts, and Discord is where announcements and coordination take place.
-                    <br /><br />
+                    <br />
+                    <br />
                     If you're looking for additional structured content outside of live lessons, you can also explore the Patreon platform, where tutorials, demonstrations, and guided practice materials are available at varying tiers.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold">I’m not comfortable learning in a 1-on-1 format. Do you offer self-study options?</h3>
-                  <p className="text-sm text-gray-700 mt-1">
+                  </>
+                ),
+                schemaA:
+                  'To access free Sunday lessons, join the Discord community or submit an application through the website. Free training slots are offered while availability lasts, and Discord is where announcements and coordination take place. For additional structured content, Patreon offers tutorials, demonstrations, and guided practice materials at varying tiers.'
+              },
+              {
+                q: 'I’m not comfortable learning in a 1-on-1 format. Do you offer self-study options?',
+                a: (
+                  <>
                     Yes. The Patreon tutorial series covers the full Voice Pathways curriculum in a self-study format. Lessons are structured clearly and progressively, allowing you to move at your own pace in a private and comfortable setting.
-                    <br /><br />
+                    <br />
+                    <br />
                     The series is updated periodically with refined instruction, additional demonstrations, and expanded vocal exercises to increase your chances of success. Whether you prefer guided coaching or independent practice, you’ll have options that respect your comfort level and learning style.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold">Are minors eligible for lessons as well?</h3>
-                  <p className="text-sm text-gray-700 mt-1">
+                  </>
+                ),
+                schemaA:
+                  'Yes. Patreon includes the Voice Pathways curriculum in a self-study format with clear, progressive lessons you can follow at your own pace. The series is updated with refined instruction, additional demonstrations, and expanded vocal exercises. You can choose guided coaching or independent practice based on your comfort level and learning style.'
+              },
+              {
+                q: 'Are minors eligible for lessons as well?',
+                a: (
+                  <>
                     Yes. We do offer lessons for minors. Our approach remains supportive, structured, and age-appropriate, with careful attention to vocal health and emotional well-being throughout the process.
-                    <br /><br />
+                    <br />
+                    <br />
                     Our Discord community is thoughtfully organized to include a separate space for minors, allowing younger students to connect, share experiences, and discuss their progress in a setting that is distinct from adult participants. Safety, respect, and healthy boundaries are always prioritized.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold">I have a learning disability. Can I still take lessons?</h3>
-                  <p className="text-sm text-gray-700 mt-1">
+                  </>
+                ),
+                schemaA:
+                  'Yes. Lessons are available for minors with an age-appropriate approach and attention to vocal health and emotional well-being. The Discord community includes a separate space for minors distinct from adult participants, with safety, respect, and boundaries prioritized.'
+              },
+              {
+                q: 'I have a learning disability. Can I still take lessons?',
+                a: (
+                  <>
                     Absolutely. The Voice Pathways curriculum has been intentionally developed to be flexible and adaptable. We use a wide range of techniques and exercises designed to approach the same vocal goals from multiple angles.
-                    <br /><br />
+                    <br />
+                    <br />
                     If one method does not resonate with you, we can substitute it with alternatives that target the same underlying skill. Your learning style matters, and we are committed to meeting you where you are so that you can progress comfortably and confidently.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+                  </>
+                ),
+                schemaA:
+                  'Yes. The curriculum is flexible and adaptable, with a wide range of techniques and exercises that approach the same vocal goals from multiple angles. If one method does not fit, it can be substituted with alternatives targeting the same underlying skill, so you can progress comfortably and confidently.'
+              }
+            ]
+
+            // FAQ schema (helps Google understand Q&A without changing visuals)
+            const faqSchema = {
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqItems.map((it) => ({
+                '@type': 'Question',
+                name: it.q,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: it.schemaA
+                }
+              }))
+            }
+
+            return (
+              <>
+                <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+
+                <Card className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60">
+                  <CardContent className="p-6">
+                    <h2 className="text-2xl font-semibold text-center">Frequently Asked Questions</h2>
+                    <div className="mt-6 grid gap-3">
+                      {faqItems.map((item) => {
+                        const isOpen = openFaq === item.q
+                        return (
+                          <div key={item.q} className="rounded-2xl border border-white/60 bg-white/60 backdrop-blur">
+                            <button
+                              type="button"
+                              className="w-full text-left p-4 flex items-center justify-between gap-3"
+                              onClick={() => setOpenFaq((prev) => (prev === item.q ? null : item.q))}
+                              aria-expanded={isOpen}
+                            >
+                              <span className="font-semibold">{item.q}</span>
+                              <motion.span
+                                aria-hidden="true"
+                                animate={{ rotate: isOpen ? 180 : 0 }}
+                                transition={{ duration: 0.25 }}
+                                className="shrink-0 text-gray-500/80"
+                              >
+                                <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                              </motion.span>
+                            </button>
+
+                            <AnimatePresence initial={false}>
+                              {isOpen ? (
+                                <motion.div
+                                  key="content"
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: 'auto' }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.28 }}
+                                  className="px-4 pb-4"
+                                >
+                                  <p className="text-sm text-gray-700 leading-relaxed">{item.a}</p>
+                                </motion.div>
+                              ) : null}
+                            </AnimatePresence>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </CardContent>
+                </Card>
+              </>
+            )
+          })()}
         </motion.section>
 
         {/* Application */}
