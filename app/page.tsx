@@ -464,6 +464,24 @@ export default function VoicePathways() {
                     The series is updated periodically with refined instruction, additional demonstrations, and expanded vocal exercises to increase your chances of success. Whether you prefer guided coaching or independent practice, you’ll have options that respect your comfort level and learning style.
                   </p>
                 </div>
+
+                <div>
+                  <h3 className="font-semibold">Are minors eligible for lessons as well?</h3>
+                  <p className="text-sm text-gray-700 mt-1">
+                    Yes. We do offer lessons for minors. Our approach remains supportive, structured, and age-appropriate, with careful attention to vocal health and emotional well-being throughout the process.
+                    <br /><br />
+                    Our Discord community is thoughtfully organized to include a separate space for minors, allowing younger students to connect, share experiences, and discuss their progress in a setting that is distinct from adult participants. Safety, respect, and healthy boundaries are always prioritized.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold">I have a learning disability. Can I still take lessons?</h3>
+                  <p className="text-sm text-gray-700 mt-1">
+                    Absolutely. The Voice Pathways curriculum has been intentionally developed to be flexible and adaptable. We use a wide range of techniques and exercises designed to approach the same vocal goals from multiple angles.
+                    <br /><br />
+                    If one method does not resonate with you, we can substitute it with alternatives that target the same underlying skill. Your learning style matters, and we are committed to meeting you where you are so that you can progress comfortably and confidently.
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
