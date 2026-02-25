@@ -407,29 +407,43 @@ export default function VoicePathways() {
                 <div>
                   <h3 className="font-semibold">How long does vocal feminization take?</h3>
                   <p className="text-sm text-gray-700 mt-1">
-                    While timelines vary from person to person, Voice Pathways is designed to be efficient and results-focused. Many students complete their core vocal goals within <strong>10–15 lessons</strong>. With consistent practice and strong alignment, meaningful changes are often felt much sooner — and the fastest successful completion to date has been achieved in just <strong>8 lessons</strong>.
+                    Results vary depending on your starting point, consistency, and practice habits. For most students, it takes only <strong>5–8 lessons</strong> to achieve a fully passing voice. The additional lessons beyond that are devoted to refining that new voice — shaping it into something that not only passes, but feels authentic, expressive, and truly your own.
+                    <br /><br />
+                    When looking at the full journey from beginning to graduation, most students complete the program within <strong>10–15 lessons</strong>. This includes not just achieving a passing voice, but developing confidence, stability, and artistic ownership of it. With exceptional work ethic and focused practice, the process can be exceeded — and to date, the quickest a student has achieved a fully feminized voice and graduated the program was in just <strong>8 lessons</strong>.
                   </p>
                 </div>
+
                 <div>
                   <h3 className="font-semibold">Do I need surgery to feminize my voice?</h3>
                   <p className="text-sm text-gray-700 mt-1">
-                    No. Most vocal feminization goals can be achieved through structured training that develops resonance, pitch coordination, speech patterns, and sustainable vocal habits. Surgical options exist, but they are not required for the vast majority of students seeking natural, confident results.
+                    No. Total vocal feminization through structured training can exceed even the best results achievable with surgery alone. Surgery primarily affects baseline pitch and aspects of vocal tract size, but it does not address the full range of skills that create a naturally feminized voice — such as resonance shaping, speech patterns, articulation, inflection, and expressive control.
+                    <br /><br />
+                    Training carries no surgical risk, requires no recovery time, and is significantly more affordable. In fact, many individuals who undergo vocal surgery still require vocal training afterward to refine their results. Additionally, some surgical procedures may impact singing ability — whereas vocal training preserves and even enhances it. With proper guidance and practice, you can learn to speak and sing comfortably in your preferred gender without surgical intervention.
                   </p>
                 </div>
+
                 <div>
                   <h3 className="font-semibold">Are lessons available online?</h3>
-                  <p className="text-sm text-gray-700 mt-1">Yes. All coaching is available online, allowing students across the globe to receive personalized guidance and support.</p>
+                  <p className="text-sm text-gray-700 mt-1">
+                    Yes. All coaching is available online, allowing students across the globe to receive personalized guidance and support.
+                  </p>
                 </div>
+
                 <div>
                   <h3 className="font-semibold">Is vocal feminization safe?</h3>
                   <p className="text-sm text-gray-700 mt-1">
                     Yes — when approached with healthy technique and proper guidance. Lessons emphasize vocal sustainability, minimizing strain, and building habits that feel natural and comfortable in everyday speech.
                   </p>
                 </div>
+
                 <div>
                   <h3 className="font-semibold">How many lessons will I need?</h3>
                   <p className="text-sm text-gray-700 mt-1">
-                    Every voice is unique, but most students graduate the core program within <strong>10–15 lessons</strong>. Some progress more quickly, and others may choose to continue refining their voice artistically through advanced or singing sessions.
+                    The number of lessons depends entirely on where you are starting. Students beginning with no prior experience typically graduate within <strong>10–15 lessons</strong>.
+                    <br /><br />
+                    If you already have a partially passing voice, most students require closer to <strong>8–10 lessons</strong> to refine and stabilize it. For those who are already consistently passing but wish to elevate their voice further — improving nuance, confidence, and artistic expression — as few as <strong>3–5 lessons</strong> may be needed.
+                    <br /><br />
+                    Every voice is different. Our goal is not simply to reach “passing,” but to help you develop a voice you feel proud of — one that feels natural, sustainable, and fully aligned with who you are.
                   </p>
                 </div>
               </div>
