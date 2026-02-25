@@ -5,7 +5,6 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '@/lib/supabase'
-import Head from 'next/head'
 
 export default function VoicePathways() {
   // Testimonials
@@ -68,78 +67,7 @@ export default function VoicePathways() {
 
   return (
     <>
-      <Head>
-        <title>Voice Pathways | Vocal Feminization, MtF Voice & Transgender Voice Coaching</title>
-        <meta name="description" content="Voice Pathways offers professional vocal feminization training, MtF voice coaching, transgender voice support, and trans voice development programs designed to help you achieve authentic vocal transformation." />
-        <meta name="keywords" content="Transvoice, Vocal Feminization, MtF Voice, Transgender Voice, Trans Women Voice, Voice Transition Training, Gender Affirming Voice Coaching" />
-        <meta property="og:title" content="Voice Pathways | Vocal Feminization, MtF Voice & Transgender Voice Coaching" />
-        <link rel="icon" href="/logo.png" />
-        <meta property="og:description" content="Professional vocal feminization and transgender voice coaching. Compassionate, results-focused training for authentic vocal transformation." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.voicepathways.com" />
-        <link rel="canonical" href="https://www.voicepathways.com" />
-        <meta name="robots" content="index, follow" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@graph': [
-              {
-                '@type': 'EducationalOrganization',
-                name: 'Voice Pathways',
-                url: 'https://www.voicepathways.com',
-                description:
-                  'Professional vocal feminization and transgender voice training services specializing in MtF voice development and gender affirming voice coaching.',
-                sameAs: [
-                  'https://patreon.com/VoicePathways',
-                  'https://discord.gg/HPP3stEZCg'
-                ]
-              },
-              {
-                '@type': 'FAQPage',
-                mainEntity: [
-                  {
-                    '@type': 'Question',
-                    name: 'How long does vocal feminization take?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text:
-                        'Timelines vary from person to person. With consistent practice and proper guidance, many students begin noticing meaningful vocal shifts within several months, with continued refinement over time.'
-                    }
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'Do I need surgery to feminize my voice?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text:
-                        'No. Most vocal feminization goals can be achieved through structured training focused on resonance, pitch, inflection, articulation, and vocal habits.'
-                    }
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'Are lessons available online?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text:
-                        'Yes. Lessons are conducted online, allowing students from around the world to receive personalized coaching and support.'
-                    }
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'Is vocal feminization safe?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text:
-                        'When approached with healthy technique and proper guidance, vocal feminization training is safe. Emphasis is placed on sustainable habits that avoid strain and discomfort.'
-                    }
-                  }
-                ]
-              }
-            ]
-          })}
-        </script>
-      </Head>
-      <div className="relative min-h-screen overflow-x-hidden bg-gradient-to-br from-[#fcfafc] via-[#f6f2f7] to-white text-gray-800">
+            <div className="relative min-h-screen overflow-x-hidden bg-gradient-to-br from-[#fcfafc] via-[#f6f2f7] to-white text-gray-800">
       {/* soft ambient glow (pearl) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -top-28 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-rose-200/18 blur-3xl" />
@@ -776,3 +704,4 @@ export default function VoicePathways() {
     </>
   )
 }
+
