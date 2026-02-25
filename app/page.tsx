@@ -445,6 +445,22 @@ export default function VoicePathways() {
                     <br /><br />
                     Every voice is different. Our goal is not simply to reach “passing,” but to help you develop a voice you feel proud of — one that feels natural, sustainable, and fully aligned with who you are.
                   </p>
+                                <div>
+                  <h3 className="font-semibold">How do I access the free lessons on Sundays?</h3>
+                  <p className="text-sm text-gray-700 mt-1">
+                    To access our free Sunday lessons, simply join our Discord community or submit an application through the website. Free training slots are offered while availability lasts, and Discord is where announcements and coordination take place.
+                    <br /><br />
+                    If you're looking for additional structured content outside of live lessons, you can also explore the Patreon platform, where tutorials, demonstrations, and guided practice materials are available at varying tiers.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold">I’m not comfortable learning in a 1-on-1 format. Do you offer self-study options?</h3>
+                  <p className="text-sm text-gray-700 mt-1">
+                    Yes. The Patreon tutorial series covers the full Voice Pathways curriculum in a self-study format. Lessons are structured clearly and progressively, allowing you to move at your own pace in a private and comfortable setting.
+                    <br /><br />
+                    The series is updated periodically with refined instruction, additional demonstrations, and expanded vocal exercises to increase your chances of success. Whether you prefer guided coaching or independent practice, you’ll have options that respect your comfort level and learning style.
+                  </p>
                 </div>
               </div>
             </CardContent>
