@@ -406,11 +406,15 @@ export default function VoicePathways() {
               <div className="mt-6 grid gap-4">
                 <div>
                   <h3 className="font-semibold">How long does vocal feminization take?</h3>
-                  <p className="text-sm text-gray-700 mt-1">Progress varies, but with steady practice many students notice meaningful changes within a few months, with continued refinement over time.</p>
+                  <p className="text-sm text-gray-700 mt-1">
+                    While timelines vary from person to person, Voice Pathways is designed to be efficient and results-focused. Many students complete their core vocal goals within <strong>10–15 lessons</strong>. With consistent practice and strong alignment, meaningful changes are often felt much sooner — and the fastest successful completion to date has been achieved in just <strong>8 lessons</strong>.
+                  </p>
                 </div>
                 <div>
                   <h3 className="font-semibold">Do I need surgery to feminize my voice?</h3>
-                  <p className="text-sm text-gray-700 mt-1">No. Most goals can be achieved through structured training that develops resonance, pitch control, inflection patterns, and sustainable vocal habits.</p>
+                  <p className="text-sm text-gray-700 mt-1">
+                    No. Most vocal feminization goals can be achieved through structured training that develops resonance, pitch coordination, speech patterns, and sustainable vocal habits. Surgical options exist, but they are not required for the vast majority of students seeking natural, confident results.
+                  </p>
                 </div>
                 <div>
                   <h3 className="font-semibold">Are lessons available online?</h3>
@@ -418,7 +422,15 @@ export default function VoicePathways() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Is vocal feminization safe?</h3>
-                  <p className="text-sm text-gray-700 mt-1">With healthy technique and proper support, training is safe. Emphasis is placed on sustainable vocal development without strain.</p>
+                  <p className="text-sm text-gray-700 mt-1">
+                    Yes — when approached with healthy technique and proper guidance. Lessons emphasize vocal sustainability, minimizing strain, and building habits that feel natural and comfortable in everyday speech.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold">How many lessons will I need?</h3>
+                  <p className="text-sm text-gray-700 mt-1">
+                    Every voice is unique, but most students graduate the core program within <strong>10–15 lessons</strong>. Some progress more quickly, and others may choose to continue refining their voice artistically through advanced or singing sessions.
+                  </p>
                 </div>
               </div>
             </CardContent>
