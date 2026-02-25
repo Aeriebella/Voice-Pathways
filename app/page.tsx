@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -20,6 +20,10 @@ export default function VoicePathways() {
 
   // Services (mobile expand)
   const [openService, setOpenService] = useState<string | null>(null)
+
+  // Margin logo opacity (fade in as you scroll)
+  const { scrollYProgress } = useScroll()
+  const marginMotifOpacity = useTransform(scrollYProgress, [0, 0.08, 0.45, 1], [0, 0, 0.65, 0.95])
 
   // Application
   const [aLoading, setALoading] = useState(false)
@@ -132,9 +136,10 @@ export default function VoicePathways() {
         </p>
       </header>
       {/* Margin motifs (stationary): rotated logos stay fixed while page scrolls behind */}
-      <div
+      <motion.div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-y-0 left-0 hidden lg:flex w-72 xl:w-80 opacity-95 z-0 items-center justify-center overflow-visible"
+        className="pointer-events-none fixed inset-y-0 left-0 hidden lg:flex w-72 xl:w-80 z-0 items-center justify-center overflow-visible"
+        style={{ opacity: marginMotifOpacity }}
       >
         <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
           <div className="h-80 w-80 rounded-full bg-gradient-to-br from-sky-200/35 to-pink-200/35 blur-3xl" />
@@ -147,11 +152,12 @@ export default function VoicePathways() {
           style={{ transform: 'rotate(90deg)', transformOrigin: 'center' }}
           draggable={false}
         />
-      </div>
+      </motion.div>
 
-      <div
+      <motion.div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-y-0 right-0 hidden lg:flex w-72 xl:w-80 opacity-95 z-0 items-center justify-center overflow-visible"
+        className="pointer-events-none fixed inset-y-0 right-0 hidden lg:flex w-72 xl:w-80 z-0 items-center justify-center overflow-visible"
+        style={{ opacity: marginMotifOpacity }}
       >
         <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
           <div className="h-80 w-80 rounded-full bg-gradient-to-br from-pink-200/35 to-sky-200/35 blur-3xl" />
@@ -164,7 +170,7 @@ export default function VoicePathways() {
           style={{ transform: 'rotate(270deg)', transformOrigin: 'center' }}
           draggable={false}
         />
-      </div>
+      </motion.div>
 
       <main id="home" className="relative max-w-5xl mx-auto grid gap-12 sm:gap-16 px-4 sm:px-6 py-8 sm:py-10 z-10">
         {/* Welcome */}
@@ -704,4 +710,3 @@ export default function VoicePathways() {
     </>
   )
 }
-
