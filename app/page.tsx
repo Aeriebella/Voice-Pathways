@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { supabase } from '@/lib/supabase'
 
 export default function VoicePathways() {
@@ -192,6 +192,27 @@ export default function VoicePathways() {
                 <br />
                 <br />
                 It is our sincere pleasure to walk beside you on this journey, offering the care, encouragement, and gentle guidance you deserve, as you step into your new voice, with confidence!
+              </p>
+            </CardContent>
+          </Card>
+        </motion.section>
+
+        {/* SEO Authority Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <Card className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60">
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-semibold">Professional Online Vocal Feminization Training</h2>
+              <p className="mt-2 text-gray-700">
+                Voice Pathways provides structured, results-focused <strong>vocal feminization training</strong> for women seeking a natural, confident voice. Our program combines resonance shaping, speech pattern refinement, pitch stabilization, and expressive control into a cohesive method designed for real-world use.
+                <br /><br />
+                Whether you are beginning your journey into <strong>MTF voice training</strong> or refining an already passing voice, our approach emphasizes sustainability, vocal health, and long-term confidence. Every lesson is delivered online, making professional <strong>transgender voice coaching</strong> accessible worldwide.
+                <br /><br />
+                Our goal is not only to help you achieve a passing voice, but to help you develop a voice that feels authentically yours — natural, expressive, and aligned with your identity.
               </p>
             </CardContent>
           </Card>
@@ -407,7 +428,7 @@ export default function VoicePathways() {
             const faqItems: Array<{
               q: string
               // JSX answer for the page
-              a: React.ReactNode
+              a: ReactNode
               // Plain-text answer for schema
               schemaA: string
             }> = [
@@ -415,7 +436,7 @@ export default function VoicePathways() {
                 q: 'How long does vocal feminization take?',
                 a: (
                   <>
-                    Results vary depending on your starting point, consistency, and practice habits. For most students, it takes only <strong>5–8 lessons</strong> to achieve a fully passing voice. The additional lessons beyond that are devoted to refining that new voice — shaping it into something that not only passes, but feels authentic, expressive, and truly your own.
+                    Most students achieve a fully passing voice within <strong>5–8 lessons</strong>, depending on their starting point, consistency, and practice habits. The additional lessons beyond that are devoted to refining that new voice — shaping it into something that not only passes, but feels authentic, expressive, and truly your own.
                     <br />
                     <br />
                     When looking at the full journey from beginning to graduation, most students complete the program within <strong>10–15 lessons</strong>. This includes not just achieving a passing voice, but developing confidence, stability, and artistic ownership of it. With exceptional work ethic and focused practice, the process can be exceeded — and to date, the quickest a student has achieved a fully feminized voice and graduated the program was in just <strong>8 lessons</strong>.
@@ -428,7 +449,7 @@ export default function VoicePathways() {
                 q: 'Do I need surgery to feminize my voice?',
                 a: (
                   <>
-                    No. Total vocal feminization through structured training can exceed even the best results achievable with surgery alone. Surgery primarily affects baseline pitch and aspects of vocal tract size, but it does not address the full range of skills that create a naturally feminized voice — such as resonance shaping, speech patterns, articulation, inflection, and expressive control.
+                    No, surgery is not required to achieve full vocal feminization. Structured training can exceed even the best results achievable with surgery alone. Surgery primarily affects baseline pitch and aspects of vocal tract size, but it does not address the full range of skills that create a naturally feminized voice — such as resonance shaping, speech patterns, articulation, inflection, and expressive control.
                     <br />
                     <br />
                     Training carries no surgical risk, requires no recovery time, and is significantly more affordable. Many individuals who undergo vocal surgery still require vocal training afterward to refine their results. Additionally, some surgical procedures may impact singing ability — whereas vocal training preserves and even enhances it. With proper guidance and practice, you can learn to speak and sing comfortably in your preferred gender without surgical intervention.
@@ -439,14 +460,16 @@ export default function VoicePathways() {
               },
               {
                 q: 'Are lessons available online?',
-                a: <>Yes. All coaching is available online, allowing students across the globe to receive personalized guidance and support.</>,
+                a: (
+                  <>Yes, all coaching is conducted online and accessible worldwide, allowing students across the globe to receive personalized guidance and support.</>
+                ),
                 schemaA:
                   'Yes. All coaching is available online, allowing students across the globe to receive personalized guidance and support.'
               },
               {
                 q: 'Is vocal feminization safe?',
                 a: (
-                  <>Yes — when approached with healthy technique and proper guidance. Lessons emphasize vocal sustainability, minimizing strain, and building habits that feel natural and comfortable in everyday speech.</>
+                  <>Yes, vocal feminization is safe when approached with healthy technique and proper guidance. Lessons emphasize vocal sustainability, minimizing strain, and building habits that feel natural and comfortable in everyday speech.</>
                 ),
                 schemaA:
                   'Yes — when approached with healthy technique and proper guidance. Lessons emphasize vocal sustainability, minimizing strain, and building habits that feel natural and comfortable in everyday speech.'
@@ -510,7 +533,7 @@ export default function VoicePathways() {
                 q: 'I have a learning disability. Can I still take lessons?',
                 a: (
                   <>
-                    Absolutely. The Voice Pathways curriculum has been intentionally developed to be flexible and adaptable. We use a wide range of techniques and exercises designed to approach the same vocal goals from multiple angles.
+                    Yes, students with learning disabilities are fully welcome and supported. The Voice Pathways curriculum has been intentionally developed to be flexible and adaptable. We use a wide range of techniques and exercises designed to approach the same vocal goals from multiple angles.
                     <br />
                     <br />
                     If one method does not resonate with you, we can substitute it with alternatives that target the same underlying skill. Your learning style matters, and we are committed to meeting you where you are so that you can progress comfortably and confidently.
