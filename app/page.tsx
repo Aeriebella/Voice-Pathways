@@ -533,14 +533,27 @@ export default function VoicePathways() {
                 q: 'I have a learning disability. Can I still take lessons?',
                 a: (
                   <>
-                    Yes, students with learning disabilities are fully welcome and supported. The Voice Pathways curriculum has been intentionally developed to be flexible and adaptable. We use a wide range of techniques and exercises designed to approach the same vocal goals from multiple angles.
+                    Yes. Students with learning disabilities are fully welcome and supported. The Voice Pathways curriculum has been intentionally developed to be flexible and adaptable, using a wide range of techniques and exercises that approach the same vocal goals from multiple angles.
                     <br />
                     <br />
-                    If one method does not resonate with you, we can substitute it with alternatives that target the same underlying skill. Your learning style matters, and we are committed to meeting you where you are so that you can progress comfortably and confidently.
+                    If one method does not resonate with you, it can be substituted with alternatives targeting the same underlying skill. Your learning style matters, and we are committed to meeting you where you are so that you can progress comfortably and confidently.
                   </>
                 ),
                 schemaA:
-                  'Yes. The curriculum is flexible and adaptable, with a wide range of techniques and exercises that approach the same vocal goals from multiple angles. If one method does not fit, it can be substituted with alternatives targeting the same underlying skill, so you can progress comfortably and confidently.'
+                  'Yes. The curriculum is flexible and adaptable, using a wide range of techniques and exercises that approach the same vocal goals from multiple angles. If one method does not fit, it can be substituted with alternatives targeting the same underlying skill so you can progress comfortably and confidently.'
+              },
+              {
+                q: 'I don’t have a webcam. Will I need one for lessons?',
+                a: (
+                  <>
+                    No. A webcam is entirely optional for lessons. The only essential equipment is a properly functioning microphone and Discord set up correctly so that your audio can be heard clearly.
+                    <br />
+                    <br />
+                    If you would like to use a webcam, we are happy to match your enthusiasm — but visual presence is not required for successful vocal training. Clear audio quality is far more important than video.
+                  </>
+                ),
+                schemaA:
+                  'No. A webcam is optional. The only essential equipment is a properly functioning microphone and Discord set up correctly so your audio can be heard clearly. Video is not required for successful vocal training; clear audio quality is far more important.'
               }
             ]
 
