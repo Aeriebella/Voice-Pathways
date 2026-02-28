@@ -809,7 +809,7 @@ export default function VoicePathways() {
                       try {
                         setTLoading(true)
                         const { error } = await supabase.from('testimonials').insert({
-                          name: tName.trim() || null,
+                          name: tName.trim() || 'Anon',
                           message: trimmedMessage,
                           approved: false
                         })
