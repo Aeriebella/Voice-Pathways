@@ -436,14 +436,17 @@ export default function VoicePathways() {
                 q: 'How long does vocal feminization take?',
                 a: (
                   <>
-                    Most students achieve a fully passing voice within <strong>5–8 lessons</strong>, depending on their starting point, consistency, and practice habits. The additional lessons beyond that are devoted to refining that new voice — shaping it into something that not only passes, but feels authentic, expressive, and truly your own.
+                    The full vocal feminization process typically takes between <strong>4–8 weeks</strong>, depending on lesson frequency, practice consistency, and ongoing feedback.
                     <br />
                     <br />
-                    When looking at the full journey from beginning to graduation, most students complete the program within <strong>10–15 lessons</strong>. This includes not just achieving a passing voice, but developing confidence, stability, and artistic ownership of it. With exceptional work ethic and focused practice, the process can be exceeded — and to date, the quickest a student has achieved a fully feminized voice and graduated the program was in just <strong>8 lessons</strong>.
+                    Students who take lessons more frequently — ideally twice per week — tend to progress much faster than those spacing lessons farther apart. Those who ask questions, submit voice clips for review, and actively engage with feedback often complete the process sooner.
+                    <br />
+                    <br />
+                    Our goal is to help you reach your fully formed voice as efficiently as possible while still maintaining a safe and sustainable learning pace. When lessons are spaced too far apart, what might otherwise take weeks can instead take months.
                   </>
                 ),
                 schemaA:
-                  'Results vary depending on your starting point, consistency, and practice habits. For most students, it takes only 5–8 lessons to achieve a fully passing voice. Additional lessons refine that new voice so it feels authentic and truly your own. For the full journey from beginning to graduation, most students complete the program within 10–15 lessons. With exceptional work ethic and focused practice, this can be exceeded — and the quickest completion to date was 8 lessons.'
+                  'The full vocal feminization process typically takes between 4–8 weeks, depending on lesson frequency, practice consistency, and ongoing feedback. Students who take lessons more frequently — ideally twice per week — tend to progress faster. Those who actively engage with feedback often complete the process sooner. Lessons spaced too far apart can significantly slow progress.'
               },
               {
                 q: 'Do I need surgery to feminize my voice?',
