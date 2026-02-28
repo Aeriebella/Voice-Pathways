@@ -763,7 +763,7 @@ export default function VoicePathways() {
             <CardContent className="p-6">
               <h2 className="text-2xl font-semibold text-center">Community Reflections</h2>
               <p className="mt-2 text-sm text-gray-600 text-center">
-                Share a short reflection from your experience. Submissions are reviewed before appearing publicly.
+                Share a short reflection from your experience with Voice Pathways or your teacher!
               </p>
 
               <div className="mt-6 grid gap-6 md:grid-cols-2 items-start">
