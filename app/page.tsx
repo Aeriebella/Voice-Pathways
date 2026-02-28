@@ -782,11 +782,11 @@ export default function VoicePathways() {
                       <p className="mt-3 text-xs text-gray-500">— {pickDisplayName(approvedTestimonials[currentTestimonial]?.name)}</p>
                     </motion.div>
                   ) : (
-                    <p className="mt-3 text-sm text-gray-500">No testimonials are currently visible.</p>
+                    <p className="mt-3 text-sm text-gray-500">Be the first to upload your testimonial!</p>
                   )}
 
                   <p className="mt-4 text-xs text-gray-500">
-                    (Only approved testimonials are shown. You can approve submissions in Supabase.)
+                    
                   </p>
                 </div>
 
