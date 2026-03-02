@@ -89,8 +89,8 @@ export default function VoicePathways() {
           <a href="#home" className="hover:underline">Home</a>
           <a href="#services" className="hover:underline">Services</a>
           <a href="#about" className="hover:underline">About</a>
-          <a href="/learn/vocal-feminization" className="hover:underline">Learn</a>
-          <a href="#apply" className="hover:underline">Apply</a>
+          <a href="/learn/vocal-feminization" className="hover:underline">Learn More</a>
+          <a href="#apply" className="hover:underline">Application</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
           <a
             href="https://patreon.com/VoicePathways"
@@ -200,15 +200,8 @@ export default function VoicePathways() {
                   href="/learn/vocal-feminization"
                   className="inline-flex items-center justify-center rounded-full px-6 py-2 shadow-lg bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition active:scale-[0.98]"
                 >
-                  Learn: Vocal Feminization
-                </a>
-                <a
-                  href="#apply"
-                  className="inline-flex items-center justify-center rounded-full px-6 py-2 shadow-lg border border-white/60 bg-white/45 backdrop-blur hover:bg-white/60 transition active:scale-[0.98]"
-                >
-                  Apply Now
-                </a>
-              </div>
+                  Learn More About Vocal Feminization
+                </a></div>
             </CardContent>
           </Card>
         </motion.section>
@@ -656,7 +649,7 @@ export default function VoicePathways() {
         >
           <Card className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60">
             <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-center">Application</h2>
+              <h2 className="text-2xl font-semibold text-center">Get in Touch</h2>
               <p className="mt-2 text-sm text-gray-600 text-center">
                 Prices will be included in our email responses to your application.
               </p>
@@ -890,8 +883,8 @@ export default function VoicePathways() {
           <a href="#home" className="hover:underline">Home</a>
           <a href="#services" className="hover:underline">Services</a>
           <a href="#about" className="hover:underline">About</a>
-          <a href="/learn/vocal-feminization" className="hover:underline">Learn</a>
-          <a href="#apply" className="hover:underline">Apply</a>
+          <a href="/learn/vocal-feminization" className="hover:underline">Learn More</a>
+          <a href="#apply" className="hover:underline">Application</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
           <a
             href="https://patreon.com/VoicePathways"
