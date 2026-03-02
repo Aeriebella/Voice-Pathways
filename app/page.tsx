@@ -89,6 +89,7 @@ export default function VoicePathways() {
           <a href="#home" className="hover:underline">Home</a>
           <a href="#services" className="hover:underline">Services</a>
           <a href="#about" className="hover:underline">About</a>
+          <a href="/learn/vocal-feminization" className="hover:underline">Learn</a>
           <a href="#apply" className="hover:underline">Apply</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
           <a
@@ -193,6 +194,21 @@ export default function VoicePathways() {
                 <br />
                 It is our sincere pleasure to walk beside you on this journey, offering the care, encouragement, and gentle guidance you deserve, as you step into your new voice, with confidence!
               </p>
+
+              <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/learn/vocal-feminization"
+                  className="inline-flex items-center justify-center rounded-full px-6 py-2 shadow-lg bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition active:scale-[0.98]"
+                >
+                  Learn: Vocal Feminization
+                </a>
+                <a
+                  href="#apply"
+                  className="inline-flex items-center justify-center rounded-full px-6 py-2 shadow-lg border border-white/60 bg-white/45 backdrop-blur hover:bg-white/60 transition active:scale-[0.98]"
+                >
+                  Apply Now
+                </a>
+              </div>
             </CardContent>
           </Card>
         </motion.section>
@@ -874,6 +890,7 @@ export default function VoicePathways() {
           <a href="#home" className="hover:underline">Home</a>
           <a href="#services" className="hover:underline">Services</a>
           <a href="#about" className="hover:underline">About</a>
+          <a href="/learn/vocal-feminization" className="hover:underline">Learn</a>
           <a href="#apply" className="hover:underline">Apply</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
           <a
