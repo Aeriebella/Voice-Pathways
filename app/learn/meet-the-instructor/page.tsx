@@ -87,15 +87,15 @@ export default function MeetTheInstructorPage() {
               </div>
 
               <p className="mt-3 text-xs text-gray-500 text-center">
-                (Optional) Add a short caption here later — eg. “Felicity, Founder & Instructor”
+                Felicity DaSilva, Founder & Lead Vocal Instructor
               </p>
             </div>
 
             {/* Intro / summary */}
             <div>
-              <h2 className="text-2xl font-semibold">Felicity</h2>
+              <h2 className="text-2xl font-semibold">Felicity DaSilva</h2>
               <p className="mt-3 text-gray-700 leading-relaxed">
-                Voice Pathways was founded by Felicity — a vocal feminization instructor with over seventeen years immersed
+                Voice Pathways was founded by Felicity DaSilva — a vocal feminization instructor with over seventeen years immersed
                 in voice study and more than seven years dedicated specifically to gender-affirming vocal training.
               </p>
 
