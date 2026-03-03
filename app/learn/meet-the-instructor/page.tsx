@@ -79,9 +79,7 @@ export default function MeetTheInstructorPage() {
                 <div className="relative h-full w-full flex items-center justify-center text-center p-6">
                   <div>
                     <p className="text-sm font-semibold text-gray-700">Portrait Coming Soon</p>
-                    <p className="mt-1 text-xs text-gray-600">
-                      You can replace this block with a photo anytime.
-                    </p>
+                  
                   </div>
                 </div>
               </div>
@@ -243,3 +241,4 @@ export default function MeetTheInstructorPage() {
     </div>
   )
 }
+
