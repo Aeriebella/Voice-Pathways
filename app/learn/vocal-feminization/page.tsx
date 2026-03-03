@@ -44,7 +44,7 @@ export default function VocalFeminizationLearnPage() {
         </nav>
 
         <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-wide font-['Playfair_Display']">
-          Learn More
+          Learn More: Vocal Feminization
         </h1>
         <p className="mt-2 text-base tracking-wide text-gray-600 max-w-2xl">
           An elegant overview of vocal feminization—what it is, what it involves, and what you can realistically expect.
@@ -58,8 +58,11 @@ export default function VocalFeminizationLearnPage() {
 
             <div className="mt-4 space-y-4 text-gray-700 leading-relaxed">
               <p>
-                Vocal feminization is the process of developing a voice that aligns with your identity through structured,
-                sustainable training. While many people assume the process is “pitch training,” a natural feminine voice is
+                Vocal feminization is the process of developing a voice through manipulation of specific
+                 oral muscle groups in order to replicate the natural configuration of feminine vocal presentation.
+                 The purpose of the training, is to align with your identity through structured,
+                sustainable training, and to treat and ultimately eliminate vocal gender dysphoria in those who practice it.
+                 While many people assume the process is “pitch training,” a natural feminine voice is
                 shaped by several factors working together—especially resonance, speech patterning, articulation, and
                 expressive delivery.
               </p>
@@ -109,11 +112,12 @@ export default function VocalFeminizationLearnPage() {
               </p>
 
               <p className="text-sm text-gray-600">
-                If you’d like to take the next step, you can reach out through the{' '}
+                If you’d like personal guidance, you can  you can reach out through the{' '}
                 <a href="/#apply" className="underline decoration-pink-200 underline-offset-4 hover:decoration-pink-300">
                   Get in Touch
                 </a>{' '}
-                section on the main page—whenever it feels right for you.
+                section on the main page—If you prefer self-study, Patreon
+                offers structured tutorials and demonstrations that follow the curriculum in an independent format.
               </p>
             </div>
           </div>
