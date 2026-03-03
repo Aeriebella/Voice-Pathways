@@ -379,7 +379,7 @@ export default function VoicePathways() {
             <CardContent className="p-6 text-center">
               <h2 className="text-2xl font-semibold">Join Our Community</h2>
               <p className="mt-2 text-gray-700">
-                Connect with fellow learners, ask questions, share wins, and receive gentle support as you practice. Our Discord is a cozy space for encouragement and accountability, and Patreon is where I share deeper tutorials, demonstrations, and clip reviews.
+                Connect with fellow learners, ask questions, share wins, and receive peer support as you practice. Our Discord is a cozy space for encouragement and accountability, and Patreon is where I share deeper tutorials, demonstrations, and clip reviews.
               </p>
 
               <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-3">
