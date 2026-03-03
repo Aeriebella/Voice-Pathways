@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
-import { Card, CardContent } from '@/components/ui/card'
 
 export const metadata: Metadata = {
-  title: 'Learn: Vocal Feminization | Voice Pathways',
+  title: 'Learn More: Vocal Feminization | Voice Pathways',
   description:
     'A clear, compassionate overview of vocal feminization—what it is, what it involves, and how Voice Pathways approaches sustainable, results-focused voice training.',
 }
@@ -18,14 +17,13 @@ export default function VocalFeminizationLearnPage() {
         <div className="absolute inset-0 bg-white/35" />
       </div>
 
-      {/* Header */}
       <header className="relative px-4 sm:px-6 pt-6 pb-4 text-center flex flex-col items-center gap-2">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/70 to-transparent"
         />
 
-        {/* Nav pill */}
+        {/* Nav pill (matches homepage vibe) */}
         <nav className="mt-1 max-w-full flex items-center justify-start sm:justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-sm text-gray-700/80 rounded-full border border-white/60 bg-white/40 px-4 sm:px-5 py-2 shadow-sm backdrop-blur overflow-x-auto">
           <a href="/#home" className="hover:underline">
             Home
@@ -38,7 +36,7 @@ export default function VocalFeminizationLearnPage() {
           </a>
           <span className="font-semibold text-gray-800">Learn More</span>
           <a href="/#apply" className="hover:underline">
-            Apply
+            Get in Touch
           </a>
           <a href="/#testimonials" className="hover:underline">
             Testimonials
@@ -46,26 +44,22 @@ export default function VocalFeminizationLearnPage() {
         </nav>
 
         <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-wide font-['Playfair_Display']">
-            Learn More: Vocal Feminization
+          Learn More
         </h1>
         <p className="mt-2 text-base tracking-wide text-gray-600 max-w-2xl">
-          A clear, detailed overview—so you can understand what vocal feminization is, and what your options look like.
+          An elegant overview of vocal feminization—what it is, what it involves, and what you can realistically expect.
         </p>
       </header>
 
       <main className="relative max-w-5xl mx-auto grid gap-10 sm:gap-12 px-4 sm:px-6 py-8 sm:py-10 z-10">
-        {/* Main Learn Card */}
-        <Card className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60">
-          <CardContent className="p-6 sm:p-8">
+        <section className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60">
+          <div className="p-6 sm:p-8">
             <h2 className="text-2xl font-semibold">What is Vocal Feminization?</h2>
 
             <div className="mt-4 space-y-4 text-gray-700 leading-relaxed">
               <p>
-                Vocal feminization is the process of developing a voice through manipulation of specific
-                 oral muscle groups in order to replicate the natural configuration of feminine vocal presentation.
-                 The purpose of the training, is to align with your identity through structured,
-                sustainable training, and treat and ultimately eliminate vocal gender dysphoria in those who practice it.
-                 While many people assume the process is “pitch training,” a natural feminine voice is
+                Vocal feminization is the process of developing a voice that aligns with your identity through structured,
+                sustainable training. While many people assume the process is “pitch training,” a natural feminine voice is
                 shaped by several factors working together—especially resonance, speech patterning, articulation, and
                 expressive delivery.
               </p>
@@ -82,7 +76,7 @@ export default function VocalFeminizationLearnPage() {
               </p>
             </div>
 
-            {/* Soft divider */}
+            {/* soundwave divider */}
             <div className="mt-8 flex justify-center">
               <svg
                 className="h-10 w-full max-w-2xl"
@@ -109,20 +103,22 @@ export default function VocalFeminizationLearnPage() {
             <h3 className="mt-8 text-xl font-semibold">What to Expect</h3>
             <div className="mt-4 space-y-4 text-gray-700 leading-relaxed">
               <p>
-                Most students begin with an evaluation so we can understand your current voice and define a training plan.
-                From there, lessons focus on the specific skills that create a naturally feminine sound—built in a way
-                that’s stable, repeatable, and comfortable over time.
+                Most students begin with an introduction and evaluation so we can understand your current voice and define
+                a training plan. From there, lessons focus on the specific skills that create a naturally feminine sound—
+                built in a way that’s stable, repeatable, and comfortable over time.
               </p>
-              <p>
-                If you’d like personal guidance, you can apply on the main website. If you prefer self-study, Patreon
-                offers structured tutorials and demonstrations that follow the curriculum in an independent format.
+
+              <p className="text-sm text-gray-600">
+                If you’d like to take the next step, you can reach out through the{' '}
+                <a href="/#apply" className="underline decoration-pink-200 underline-offset-4 hover:decoration-pink-300">
+                  Get in Touch
+                </a>{' '}
+                section on the main page—whenever it feels right for you.
               </p>
             </div>
+          </div>
+        </section>
 
-          </CardContent>
-        </Card>
-
-        {/* Footer nav (so it still feels like your site) */}
         <footer className="text-center p-6 flex flex-col items-center gap-4 text-sm text-gray-600">
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-700/80 rounded-full border border-white/60 bg-white/40 px-5 py-2 shadow-sm backdrop-blur">
             <a href="/#home" className="hover:underline">
@@ -134,9 +130,9 @@ export default function VocalFeminizationLearnPage() {
             <a href="/#about" className="hover:underline">
               About
             </a>
-            <span className="font-semibold text-gray-800">Learn</span>
+            <span className="font-semibold text-gray-800">Learn More</span>
             <a href="/#apply" className="hover:underline">
-              Apply
+              Get in Touch
             </a>
             <a href="/#testimonials" className="hover:underline">
               Testimonials
@@ -147,6 +143,4 @@ export default function VocalFeminizationLearnPage() {
       </main>
     </div>
   )
-}
-
 }
