@@ -84,7 +84,32 @@ export default function VocalFeminizationLearnPage() {
                 training. We emphasize vocal health, efficiency, and confidence—so progress feels supported, not punishing.
               </p>
             </div>
+<h3 className="mt-8 text-xl font-semibold">What We’re Actually Training</h3>
+<div className="mt-4 space-y-4 text-gray-700 leading-relaxed">
+  <p>
+    Think of this as building a voice that holds together in real life — not just in a quiet room, but when you’re
+    laughing, tired, emotional, or speaking quickly.
+  </p>
 
+  <div className="grid gap-3 sm:grid-cols-2">
+    {[
+      { t: 'Resonance', d: 'Shaping the instrument of your voice — shaping brightness and depth.' },
+      { t: 'Stability', d: 'Keeping your voice consistent under stress or fatigue.' },
+      { t: 'Pitch Control', d: 'Using pitch comfortably — without tension or strain.' },
+      { t: 'Speech Patterning', d: 'Phrasing, cadence, and flow that feel natural.' },
+      { t: 'Articulation', d: 'Clarity, softness, and precision in sound shaping.' },
+      { t: 'Expression', d: 'Making your voice feel like you — not a performance.' },
+    ].map((x) => (
+      <div
+        key={x.t}
+        className="rounded-2xl border border-white/60 bg-white/60 backdrop-blur p-4 transition duration-300 hover:-translate-y-0.5 hover:shadow-md"
+      >
+        <p className="font-semibold text-gray-800">{x.t}</p>
+        <p className="text-sm text-gray-600 mt-1">{x.d}</p>
+      </div>
+    ))}
+  </div>
+</div>
             {/* soundwave divider */}
             <div className="mt-8 flex justify-center">
               <svg
@@ -118,18 +143,18 @@ export default function VocalFeminizationLearnPage() {
               </p>
 
               <p className="text-sm text-gray-600">
-                If you’d like personal guidance, you can  you can reach out through the{' '}
+                If you’d like personal guidance, you’re welcome to reach out through the{' '}
                 <a href="/#apply" className="underline decoration-pink-200 underline-offset-4 hover:decoration-pink-300">
                   Get in Touch
                 </a>{' '}
-                section on the main page—If you prefer self-study, Patreon
-                offers structured tutorials and demonstrations that follow the curriculum in an independent format.
+                section on the main page. If you prefer self-study, Patreon offers structured tutorials and demonstrations that follow
+                the curriculum in an independent format.
               </p>
             </div>
           </div>
         </section>
 <section className="mt-16">
-  <div className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60 p-6 text-center">
+  <div className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60 p-6 text-center transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:bg-white/80">
     <h2 className="text-2xl font-semibold">Explore Further</h2>
     <p className="mt-2 text-gray-700 max-w-xl mx-auto">
       Learn more about the philosophy and experience behind Voice Pathways.
@@ -138,7 +163,7 @@ export default function VocalFeminizationLearnPage() {
     <div className="mt-5">
       <a
         href="/learn/meet-the-instructor"
-        className="inline-flex items-center justify-center rounded-full px-6 py-2 shadow-lg bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition active:scale-[0.98]"
+      className="inline-flex items-center justify-center rounded-full px-6 py-2 shadow-lg bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition duration-300 hover:shadow-xl hover:brightness-[1.03] active:scale-[0.98]"
       >
         Meet the Instructor
       </a>
@@ -165,7 +190,6 @@ export default function VocalFeminizationLearnPage() {
             </a>
           </nav>
           <div>© Voice Pathways</div>
-          {/* Explore Further */}
         </footer>
       </main>
     </div>
