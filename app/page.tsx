@@ -219,7 +219,7 @@ export default function VoicePathways() {
               <p className="mt-2 text-gray-700">
                 Voice Pathways provides structured, results-focused <strong>vocal feminization training</strong> for women seeking a natural, confident voice. Our program combines resonance shaping, speech pattern refinement, pitch stabilization, and expressive control into a cohesive method designed for real-world use.
                 <br /><br />
-                Whether you are beginning your journey into <strong>MTF voice training</strong> or refining an already passing voice, our approach emphasizes sustainability, vocal health, and long-term confidence. Every lesson is delivered online, making professional <strong>transgender voice coaching</strong> accessible worldwide.
+                Whether you are beginning your journey into <strong>MTF voice training</strong> or refining an already passing voice, our approach emphasizes sustainability, vocal health, and long-term confidence. Every lesson is delivered online, making professional <strong>online vocal feminization coaching</strong> accessible worldwide.
                 <br /><br />
                 Our goal is not only to help you achieve a passing voice, but to help you develop a voice that feels authentically yours — natural, expressive, and aligned with your identity.
               </p>
@@ -259,7 +259,7 @@ export default function VoicePathways() {
             },
             {
               title: 'Singing Lessons',
-              desc: 'For graduated students, singing lessons are available to further develop the artistic side of your new voice.'
+              desc: 'For graduated clients, singing lessons are available to further develop the artistic side of your new voice.'
             },
             {
               title: 'Homework / Practice',
@@ -358,10 +358,14 @@ export default function VoicePathways() {
             <CardContent className="p-6">
               <h2 className="text-2xl font-semibold">About Us</h2>
               <p className="mt-2 text-gray-700">
-                Voice Pathways is dedicated to compassionate, results-focused voice coaching. Our approach blends technique, care, and clear guidance to help you feel confident and supported at every step.
-                <br />
-                <br />
-                With over seven years of experience teaching voice, we have worked with students from across the globe and supported a wide range of dialects and accents. This diversity has shaped a flexible, personalized approach that meets you where you are and honors your personal goals.
+                <strong>Felicity DaSilva</strong><br />
+                <span className="text-sm text-gray-500">Founder & Lead Vocal Instructor</span>
+                <br /><br />
+                Felicity DaSilva is the founder of Voice Pathways and a dedicated vocal specialist with over seventeen years immersed in vocal study, performance, and experimentation — including more than seven years focused specifically on vocal feminization training.
+                <br /><br />
+                Her work centers on structured, efficient, and sustainable vocal transformation. Rather than relying on vague advice or surface-level adjustments, Felicity teaches a comprehensive system that develops resonance, speech patterns, articulation, expressive control, and long-term vocal stability.
+                <br /><br />
+                Students from across the globe have worked with Felicity to achieve voices that are not only passing, but deeply personal — voices they feel proud of, confident in, and at home within. Every lesson is guided with clarity, patience, and respect for the individual journey behind each voice.
               </p>
             </CardContent>
           </Card>
