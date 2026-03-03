@@ -90,7 +90,7 @@ export default function VoicePathways() {
           <a href="#services" className="hover:underline">Services</a>
           <a href="#about" className="hover:underline">About</a>
           <a href="/learn/vocal-feminization" className="hover:underline">Learn More</a>
-          <a href="#apply" className="hover:underline">Application</a>
+          <a href="#apply" className="hover:underline">Get in Touch</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
           <a
             href="https://patreon.com/VoicePathways"
@@ -884,7 +884,7 @@ export default function VoicePathways() {
           <a href="#services" className="hover:underline">Services</a>
           <a href="#about" className="hover:underline">About</a>
           <a href="/learn/vocal-feminization" className="hover:underline">Learn More</a>
-          <a href="#apply" className="hover:underline">Application</a>
+          <a href="#apply" className="hover:underline">Get in Touch</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
           <a
             href="https://patreon.com/VoicePathways"
