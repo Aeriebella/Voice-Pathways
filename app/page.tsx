@@ -358,14 +358,11 @@ export default function VoicePathways() {
             <CardContent className="p-6">
               <h2 className="text-2xl font-semibold">About Us</h2>
               <p className="mt-2 text-gray-700">
-                <strong>Felicity DaSilva</strong><br />
-                <span className="text-sm text-gray-500">Founder & Lead Vocal Instructor</span>
+                Voice Pathways is a dedicated vocal feminization training organization committed to helping students develop voices that feel natural, sustainable, and authentically aligned with who they are.
                 <br /><br />
-                Felicity DaSilva is the founder of Voice Pathways and a dedicated vocal specialist with over seventeen years immersed in vocal study, performance, and experimentation — including more than seven years focused specifically on vocal feminization training.
+                Our work centers on structured, results-focused instruction designed to move students forward efficiently while maintaining vocal health and long-term stability. Every lesson is approached with care, clarity, and respect for the deeply personal nature of vocal transformation.
                 <br /><br />
-                Her work centers on structured, efficient, and sustainable vocal transformation. Rather than relying on vague advice or surface-level adjustments, Felicity teaches a comprehensive system that develops resonance, speech patterns, articulation, expressive control, and long-term vocal stability.
-                <br /><br />
-                Students from across the globe have worked with Felicity to achieve voices that are not only passing, but deeply personal — voices they feel proud of, confident in, and at home within. Every lesson is guided with clarity, patience, and respect for the individual journey behind each voice.
+                We believe that vocal feminization is not simply about reaching a “passing” voice — it is about cultivating confidence, comfort, and ownership over your sound. Voice Pathways exists to provide supportive guidance, thoughtful methodology, and a welcoming environment where growth feels both safe and empowering.
               </p>
             </CardContent>
           </Card>
