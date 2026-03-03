@@ -42,6 +42,12 @@ export default function VocalFeminizationLearnPage() {
             Testimonials
           </a>
         </nav>
+        
+        <img
+          src="/logo.png"
+          alt="Voice Pathways logo"
+          className="h-36 sm:h-48 w-auto -mb-1 mt-2 opacity-95 drop-shadow-sm"
+        />
 
         <h1 className="mt-4 text-3xl sm:text-5xl font-semibold tracking-wide font-['Playfair_Display']">
           Learn More: Vocal Feminization
