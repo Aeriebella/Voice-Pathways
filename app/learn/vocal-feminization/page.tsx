@@ -42,7 +42,7 @@ export default function VocalFeminizationLearnPage() {
             Testimonials
           </a>
         </nav>
-        
+
         <img
           src="/logo.png"
           alt="Voice Pathways logo"
@@ -149,6 +149,24 @@ export default function VocalFeminizationLearnPage() {
             </a>
           </nav>
           <div>© Voice Pathways</div>
+          {/* Explore Further */}
+<section className="mt-16">
+  <div className="rounded-2xl shadow-xl backdrop-blur bg-white/70 border border-white/60 p-6 text-center">
+    <h2 className="text-2xl font-semibold">Explore Further</h2>
+    <p className="mt-2 text-gray-700 max-w-xl mx-auto">
+      Learn more about the philosophy and experience behind Voice Pathways.
+    </p>
+
+    <div className="mt-5">
+      <a
+        href="/learn/meet-the-instructor"
+        className="inline-flex items-center justify-center rounded-full px-6 py-2 shadow-lg bg-gradient-to-r from-sky-200 to-pink-200 text-gray-800 hover:from-sky-300 hover:to-pink-300 transition active:scale-[0.98]"
+      >
+        Meet the Instructor
+      </a>
+    </div>
+  </div>
+</section>
         </footer>
       </main>
     </div>
