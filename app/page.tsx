@@ -72,9 +72,33 @@ export default function VoicePathways() {
     return trimmed ? trimmed : 'Anonymous'
   }
 
+  // Organization schema (helps Google associate your brand + logo)
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://voicepathways.com/#organization',
+    name: 'Voice Pathways',
+    url: 'https://voicepathways.com/',
+    logo: 'https://voicepathways.com/icon.png',
+    sameAs: [
+      'https://patreon.com/VoicePathways',
+      'https://discord.gg/HPP3stEZCg'
+    ]
+  }
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://voicepathways.com/#website',
+    url: 'https://voicepathways.com/',
+    name: 'Voice Pathways',
+    publisher: { '@id': 'https://voicepathways.com/#organization' }
+  }
+
   return (
     <>
-            <div className="relative min-h-screen overflow-x-hidden bg-gradient-to-br from-[#fcfafc] via-[#f6f2f7] to-white text-gray-800">
+      <script type="application/ld+json">{JSON.stringify([organizationSchema, websiteSchema])}</script>
+      <div className="relative min-h-screen overflow-x-hidden bg-gradient-to-br from-[#fcfafc] via-[#f6f2f7] to-white text-gray-800">
       {/* soft ambient glow (pearl) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -top-28 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-rose-200/18 blur-3xl" />
